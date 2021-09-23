@@ -48,4 +48,32 @@ public class Tema implements Serializable{
 	public void setNTema(String nTema) {
 		NTema = nTema;
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + CTema;
+		result = prime * result + ((NTema == null) ? 0 : NTema.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Tema other = (Tema) obj;
+		if (CTema != other.CTema)
+			return false;
+		if (NTema == null) {
+			if (other.NTema != null)
+				return false;
+		} else if (!NTema.equals(other.NTema))
+			return false;
+		return true;
+	}
 }

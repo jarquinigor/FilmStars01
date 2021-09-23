@@ -32,11 +32,11 @@ public class Actor implements Serializable {
 		this.NActor = NActor;
 	}
 	
-	public int getId() {
+	public int getCActor() {
 		return CActor;
 	}
 
-	public void setId(int CActor) {
+	public void setCActor(int CActor) {
 		this.CActor = CActor;
 	}
 
