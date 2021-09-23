@@ -7,5 +7,5 @@ import pe.edu.upc.entity.NoticiaComentario;
 public interface INoticiaComentarioService {
 	public void insertar(NoticiaComentario noticiaComentario);
 	public List<NoticiaComentario> listar();
-	public void eliminar(int CNoticiaComentario);
+	public void eliminar(int cNoticiaComentario);
 }

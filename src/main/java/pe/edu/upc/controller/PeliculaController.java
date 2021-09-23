@@ -69,7 +69,7 @@ public class PeliculaController implements Serializable{
 	}
 	
 	public void eliminar(Pelicula pelicula) {
-		pService.eliminar(pelicula.getCPelicula());
+		pService.eliminar(pelicula.getcPelicula());
 		this.listarPelicula();
 	}
 

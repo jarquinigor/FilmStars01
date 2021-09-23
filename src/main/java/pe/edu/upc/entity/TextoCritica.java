@@ -19,18 +19,18 @@ public class TextoCritica implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CTextoCritica;
+	private int cTextoCritica;
 
 	@ManyToOne
-	@JoinColumn(name = "CPelicula", nullable = false)
+	@JoinColumn(name = "cPelicula", nullable = false)
 	private Pelicula pelicula;
 
 	@ManyToOne
-	@JoinColumn(name = "CCritico", nullable = false)
+	@JoinColumn(name = "cCritico", nullable = false)
 	private Genero critico;
 	
 	@Column(name="textoCritica", nullable=false, length=400)
-	private String TCritica;
+	private String tCritica;
 
 	public TextoCritica() {
 		super();
@@ -39,18 +39,18 @@ public class TextoCritica implements Serializable {
 
 	public TextoCritica(int cTextoCritica, Pelicula pelicula, Genero critico, String tCritica) {
 		super();
-		CTextoCritica = cTextoCritica;
+		this.cTextoCritica = cTextoCritica;
 		this.pelicula = pelicula;
 		this.critico = critico;
-		TCritica = tCritica;
+		this.tCritica = tCritica;
 	}
 
-	public int getCTextoCritica() {
-		return CTextoCritica;
+	public int getcTextoCritica() {
+		return cTextoCritica;
 	}
 
-	public void setCTextoCritica(int cTextoCritica) {
-		CTextoCritica = cTextoCritica;
+	public void setcTextoCritica(int cTextoCritica) {
+		this.cTextoCritica = cTextoCritica;
 	}
 
 	public Pelicula getPelicula() {
@@ -69,11 +69,11 @@ public class TextoCritica implements Serializable {
 		this.critico = critico;
 	}
 
-	public String getTCritica() {
-		return TCritica;
+	public String gettCritica() {
+		return tCritica;
 	}
 
-	public void setTCritica(String tCritica) {
-		TCritica = tCritica;
+	public void settCritica(String tCritica) {
+		this.tCritica = tCritica;
 	}
 }

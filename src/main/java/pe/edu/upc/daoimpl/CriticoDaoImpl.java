@@ -28,7 +28,7 @@ public class CriticoDaoImpl implements ICriticoDao, Serializable{
 	@Override
 	public List<Critico> listar() {
 		List<Critico> lista = new ArrayList<Critico>();
-		Query q = em.createQuery("select a from Critico a");
+		Query q = em.createQuery("select c from Critico c");
 		lista = (List<Critico>) q.getResultList();
 		return lista;
 	}

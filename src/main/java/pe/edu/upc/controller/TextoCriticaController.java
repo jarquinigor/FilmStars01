@@ -82,7 +82,7 @@ public class TextoCriticaController implements Serializable{
 	}
 	
 	public void eliminar(TextoCritica textoCritica) {
-		tcService.eliminar(textoCritica.getCTextoCritica());
+		tcService.eliminar(textoCritica.getcTextoCritica());
 		this.listarTextoCritica();
 	}
 

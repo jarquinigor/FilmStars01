@@ -82,7 +82,7 @@ public class PublicacionComentarioController implements Serializable{
 	}
 	
 	public void eliminar(PublicacionComentario publicacionComentario) {
-		pcService.eliminar(publicacionComentario.getCPublicacionComentario());
+		pcService.eliminar(publicacionComentario.getcPublicacionComentario());
 		this.listarPublicacionComentario();
 	}
 

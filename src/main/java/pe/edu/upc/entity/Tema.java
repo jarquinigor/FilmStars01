@@ -17,10 +17,10 @@ public class Tema implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CTema;
+	private int cTema;
 	
 	@Column(name="nombreTema", nullable=false, length=30)
-	private String NTema;
+	private String nTema;
 
 	public Tema() {
 		super();
@@ -29,32 +29,32 @@ public class Tema implements Serializable{
 
 	public Tema(int cTema, String nTema) {
 		super();
-		CTema = cTema;
-		NTema = nTema;
+		this.cTema = cTema;
+		this.nTema = nTema;
 	}
 
-	public int getCTema() {
-		return CTema;
+	public int getcTema() {
+		return cTema;
 	}
 
-	public void setCTema(int cTema) {
-		CTema = cTema;
+	public void setcTema(int cTema) {
+		this.cTema = cTema;
 	}
 
-	public String getNTema() {
-		return NTema;
+	public String getnTema() {
+		return nTema;
 	}
 
-	public void setNTema(String nTema) {
-		NTema = nTema;
+	public void setnTema(String nTema) {
+		this.nTema = nTema;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + CTema;
-		result = prime * result + ((NTema == null) ? 0 : NTema.hashCode());
+		result = prime * result + cTema;
+		result = prime * result + ((nTema == null) ? 0 : nTema.hashCode());
 		return result;
 	}
 
@@ -67,12 +67,12 @@ public class Tema implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Tema other = (Tema) obj;
-		if (CTema != other.CTema)
+		if (cTema != other.cTema)
 			return false;
-		if (NTema == null) {
-			if (other.NTema != null)
+		if (nTema == null) {
+			if (other.nTema != null)
 				return false;
-		} else if (!NTema.equals(other.NTema))
+		} else if (!nTema.equals(other.nTema))
 			return false;
 		return true;
 	}

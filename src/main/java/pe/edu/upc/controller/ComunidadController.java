@@ -69,7 +69,7 @@ public class ComunidadController implements Serializable{
 	}
 	
 	public void eliminar(Comunidad comunidad) {
-		cService.eliminar(comunidad.getCComunidad());
+		cService.eliminar(comunidad.getcComunidad());
 		this.listarComunidad();
 	}
 

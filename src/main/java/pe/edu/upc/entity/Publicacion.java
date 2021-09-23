@@ -19,24 +19,24 @@ public class Publicacion implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CPublicacion;
+	private int cPublicacion;
 
 	@ManyToOne
-	@JoinColumn(name = "CComunidad", nullable = false)
+	@JoinColumn(name = "cComunidad", nullable = false)
 	private Comunidad comunidad;
 	
 	@ManyToOne
-	@JoinColumn(name = "CUsuario", nullable = false)
+	@JoinColumn(name = "cUsuario", nullable = false)
 	private Usuario usuario;
 	
 	@Column(name="tituloPublicacion", nullable=false, length=80)
-	private String NPublicacionTitulo;
+	private String nPublicacionTitulo;
 	
 	@Column(name="textoPublicacion", nullable=false, length=800)
-	private String TPublicacion;
+	private String tPublicacion;
 	
 	@Column(name="imagenPublicacion", nullable=false, length=200)
-	private String TPublicacionImagen;
+	private String tPublicacionImagen;
 
 	public Publicacion() {
 		super();
@@ -46,20 +46,20 @@ public class Publicacion implements Serializable {
 	public Publicacion(int cPublicacion, Comunidad comunidad, Usuario usuario, String nPublicacionTitulo,
 			String tPublicacion, String tPublicacionImagen) {
 		super();
-		CPublicacion = cPublicacion;
+		this.cPublicacion = cPublicacion;
 		this.comunidad = comunidad;
 		this.usuario = usuario;
-		NPublicacionTitulo = nPublicacionTitulo;
-		TPublicacion = tPublicacion;
-		TPublicacionImagen = tPublicacionImagen;
+		this.nPublicacionTitulo = nPublicacionTitulo;
+		this.tPublicacion = tPublicacion;
+		this.tPublicacionImagen = tPublicacionImagen;
 	}
 
-	public int getCPublicacion() {
-		return CPublicacion;
+	public int getcPublicacion() {
+		return cPublicacion;
 	}
 
-	public void setCPublicacion(int cPublicacion) {
-		CPublicacion = cPublicacion;
+	public void setcPublicacion(int cPublicacion) {
+		this.cPublicacion = cPublicacion;
 	}
 
 	public Comunidad getComunidad() {
@@ -78,39 +78,39 @@ public class Publicacion implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public String getNPublicacionTitulo() {
-		return NPublicacionTitulo;
+	public String getnPublicacionTitulo() {
+		return nPublicacionTitulo;
 	}
 
-	public void setNPublicacionTitulo(String nPublicacionTitulo) {
-		NPublicacionTitulo = nPublicacionTitulo;
+	public void setnPublicacionTitulo(String nPublicacionTitulo) {
+		this.nPublicacionTitulo = nPublicacionTitulo;
 	}
 
-	public String getTPublicacion() {
-		return TPublicacion;
+	public String gettPublicacion() {
+		return tPublicacion;
 	}
 
-	public void setTPublicacion(String tPublicacion) {
-		TPublicacion = tPublicacion;
+	public void settPublicacion(String tPublicacion) {
+		this.tPublicacion = tPublicacion;
 	}
 
-	public String getTPublicacionImagen() {
-		return TPublicacionImagen;
+	public String gettPublicacionImagen() {
+		return tPublicacionImagen;
 	}
 
-	public void setTPublicacionImagen(String tPublicacionImagen) {
-		TPublicacionImagen = tPublicacionImagen;
+	public void settPublicacionImagen(String tPublicacionImagen) {
+		this.tPublicacionImagen = tPublicacionImagen;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + CPublicacion;
-		result = prime * result + ((NPublicacionTitulo == null) ? 0 : NPublicacionTitulo.hashCode());
-		result = prime * result + ((TPublicacion == null) ? 0 : TPublicacion.hashCode());
-		result = prime * result + ((TPublicacionImagen == null) ? 0 : TPublicacionImagen.hashCode());
+		result = prime * result + cPublicacion;
 		result = prime * result + ((comunidad == null) ? 0 : comunidad.hashCode());
+		result = prime * result + ((nPublicacionTitulo == null) ? 0 : nPublicacionTitulo.hashCode());
+		result = prime * result + ((tPublicacion == null) ? 0 : tPublicacion.hashCode());
+		result = prime * result + ((tPublicacionImagen == null) ? 0 : tPublicacionImagen.hashCode());
 		result = prime * result + ((usuario == null) ? 0 : usuario.hashCode());
 		return result;
 	}
@@ -124,27 +124,27 @@ public class Publicacion implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Publicacion other = (Publicacion) obj;
-		if (CPublicacion != other.CPublicacion)
-			return false;
-		if (NPublicacionTitulo == null) {
-			if (other.NPublicacionTitulo != null)
-				return false;
-		} else if (!NPublicacionTitulo.equals(other.NPublicacionTitulo))
-			return false;
-		if (TPublicacion == null) {
-			if (other.TPublicacion != null)
-				return false;
-		} else if (!TPublicacion.equals(other.TPublicacion))
-			return false;
-		if (TPublicacionImagen == null) {
-			if (other.TPublicacionImagen != null)
-				return false;
-		} else if (!TPublicacionImagen.equals(other.TPublicacionImagen))
+		if (cPublicacion != other.cPublicacion)
 			return false;
 		if (comunidad == null) {
 			if (other.comunidad != null)
 				return false;
 		} else if (!comunidad.equals(other.comunidad))
+			return false;
+		if (nPublicacionTitulo == null) {
+			if (other.nPublicacionTitulo != null)
+				return false;
+		} else if (!nPublicacionTitulo.equals(other.nPublicacionTitulo))
+			return false;
+		if (tPublicacion == null) {
+			if (other.tPublicacion != null)
+				return false;
+		} else if (!tPublicacion.equals(other.tPublicacion))
+			return false;
+		if (tPublicacionImagen == null) {
+			if (other.tPublicacionImagen != null)
+				return false;
+		} else if (!tPublicacionImagen.equals(other.tPublicacionImagen))
 			return false;
 		if (usuario == null) {
 			if (other.usuario != null)

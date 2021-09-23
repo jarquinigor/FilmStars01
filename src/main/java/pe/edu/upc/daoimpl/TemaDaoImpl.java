@@ -28,7 +28,7 @@ public class TemaDaoImpl implements ITemaDao, Serializable{
 	@Override
 	public List<Tema> listar() {
 		List<Tema> lista = new ArrayList<Tema>();
-		Query q = em.createQuery("select m from Tema m");
+		Query q = em.createQuery("select t from Tema t");
 		lista = (List<Tema>) q.getResultList();
 		return lista;
 	}

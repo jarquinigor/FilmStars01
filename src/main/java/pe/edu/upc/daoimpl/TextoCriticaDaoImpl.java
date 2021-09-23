@@ -28,7 +28,7 @@ public class TextoCriticaDaoImpl implements ITextoCriticaDao, Serializable{
 	@Override
 	public List<TextoCritica> listar() {
 		List<TextoCritica> lista = new ArrayList<TextoCritica>();
-		Query q = em.createQuery("select m from TextoCritica m");
+		Query q = em.createQuery("select tc from TextoCritica tc");
 		lista = (List<TextoCritica>) q.getResultList();
 		return lista;
 	}

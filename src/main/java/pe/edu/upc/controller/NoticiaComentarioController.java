@@ -82,7 +82,7 @@ public class NoticiaComentarioController implements Serializable{
 	}
 	
 	public void eliminar(NoticiaComentario noticiaComentario) {
-		ncService.eliminar(noticiaComentario.getCNoticiaComentario());
+		ncService.eliminar(noticiaComentario.getcNoticiaComentario());
 		this.listarNoticiaComentario();
 	}
 

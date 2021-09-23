@@ -82,7 +82,7 @@ public class PublicacionController implements Serializable{
 	}
 	
 	public void eliminar(Publicacion publicacion) {
-		pService.eliminar(publicacion.getCPublicacion());
+		pService.eliminar(publicacion.getcPublicacion());
 		this.listarPublicacion();
 	}
 

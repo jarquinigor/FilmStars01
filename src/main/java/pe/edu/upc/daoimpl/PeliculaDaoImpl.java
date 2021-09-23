@@ -28,7 +28,7 @@ public class PeliculaDaoImpl implements IPeliculaDao, Serializable{
 	@Override
 	public List<Pelicula> listar() {
 		List<Pelicula> lista = new ArrayList<Pelicula>();
-		Query q = em.createQuery("select m from Pelicula m");
+		Query q = em.createQuery("select p from Pelicula p");
 		lista = (List<Pelicula>) q.getResultList();
 		return lista;
 	}

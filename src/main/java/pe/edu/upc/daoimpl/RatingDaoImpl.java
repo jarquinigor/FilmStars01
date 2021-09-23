@@ -28,7 +28,7 @@ public class RatingDaoImpl implements IRatingDao, Serializable{
 	@Override
 	public List<Rating> listar() {
 		List<Rating> lista = new ArrayList<Rating>();
-		Query q = em.createQuery("select m from Rating m");
+		Query q = em.createQuery("select r from Rating r");
 		lista = (List<Rating>) q.getResultList();
 		return lista;
 	}

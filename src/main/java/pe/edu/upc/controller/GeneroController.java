@@ -50,7 +50,7 @@ public class GeneroController implements Serializable {
 	}
 
 	public void eliminar(Genero genero) {
-		gService.eliminar(genero.getCGenero());
+		gService.eliminar(genero.getcGenero());
 		this.listarGenero();
 	}
 

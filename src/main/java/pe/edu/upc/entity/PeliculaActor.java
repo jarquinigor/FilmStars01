@@ -12,45 +12,45 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Pelicula_Actor")
-public class Pelicula_Actor implements Serializable {
+@Table(name="PeliculaActor")
+public class PeliculaActor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CPelicula_Actor;
+	private int cPeliculaActor;
 
 	@ManyToOne
-	@JoinColumn(name = "CPelicula", nullable = false)
+	@JoinColumn(name = "cPelicula", nullable = false)
 	private Pelicula pelicula;
 
 	@ManyToOne
-	@JoinColumn(name = "CActor", nullable = false)
+	@JoinColumn(name = "cActor", nullable = false)
 	private Actor actor;
 	
 	@Column(name="nombrePersonaje", nullable=false, length=60)
-	private String NPersonaje;
+	private String nPersonaje;
 
-	public Pelicula_Actor() {
+	public PeliculaActor() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Pelicula_Actor(int cPelicula_Actor, Pelicula pelicula, Actor actor, String nPersonaje) {
+	public PeliculaActor(int cPeliculaActor, Pelicula pelicula, Actor actor, String nPersonaje) {
 		super();
-		CPelicula_Actor = cPelicula_Actor;
+		this.cPeliculaActor = cPeliculaActor;
 		this.pelicula = pelicula;
 		this.actor = actor;
-		NPersonaje = nPersonaje;
+		this.nPersonaje = nPersonaje;
 	}
 
-	public int getCPelicula_Actor() {
-		return CPelicula_Actor;
+	public int getcPeliculaActor() {
+		return cPeliculaActor;
 	}
 
-	public void setCPelicula_Actor(int cPelicula_Actor) {
-		CPelicula_Actor = cPelicula_Actor;
+	public void setcPeliculaActor(int cPeliculaActor) {
+		this.cPeliculaActor = cPeliculaActor;
 	}
 
 	public Pelicula getPelicula() {
@@ -69,11 +69,11 @@ public class Pelicula_Actor implements Serializable {
 		this.actor = actor;
 	}
 
-	public String getNPersonaje() {
-		return NPersonaje;
+	public String getnPersonaje() {
+		return nPersonaje;
 	}
 
-	public void setNPersonaje(String nPersonaje) {
-		NPersonaje = nPersonaje;
+	public void setnPersonaje(String nPersonaje) {
+		this.nPersonaje = nPersonaje;
 	}
 }

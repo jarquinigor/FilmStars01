@@ -7,5 +7,5 @@ import pe.edu.upc.entity.Comunidad;
 public interface IComunidadService {
 	public void insertar(Comunidad comunidad);
 	public List<Comunidad> listar();
-	public void eliminar(int CComunidad);
+	public void eliminar(int cComunidad);
 }

@@ -28,7 +28,7 @@ public class DirectorDaoImpl implements IDirectorDao, Serializable{
 	@Override
 	public List<Director> listar() {
 		List<Director> lista = new ArrayList<Director>();
-		Query q = em.createQuery("select a from Director a");
+		Query q = em.createQuery("select d from Director d");
 		lista = (List<Director>) q.getResultList();
 		return lista;
 	}
