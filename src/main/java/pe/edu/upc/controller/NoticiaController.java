@@ -50,7 +50,7 @@ public class NoticiaController implements Serializable {
 	}
 
 	public void eliminar(Noticia noticia) {
-		nService.eliminar(noticia.getCNoticia());
+		nService.eliminar(noticia.getcNoticia());
 		this.listarNoticia();
 	}
 

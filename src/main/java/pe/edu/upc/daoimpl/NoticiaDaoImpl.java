@@ -28,7 +28,7 @@ public class NoticiaDaoImpl implements INoticiaDao, Serializable{
 	@Override
 	public List<Noticia> listar() {
 		List<Noticia> lista = new ArrayList<Noticia>();
-		Query q = em.createQuery("select m from Noticia m");
+		Query q = em.createQuery("select n from Noticia n");
 		lista = (List<Noticia>) q.getResultList();
 		return lista;
 	}

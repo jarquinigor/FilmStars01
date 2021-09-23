@@ -17,10 +17,10 @@ public class Director implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CDirector;
+	private int cDirector;
 	
 	@Column(name="nombreDirector", nullable=false, length=60)
-	private String NDirector;
+	private String nDirector;
 
 	public Director() {
 		super();
@@ -29,32 +29,32 @@ public class Director implements Serializable{
 
 	public Director(int cDirector, String nDirector) {
 		super();
-		CDirector = cDirector;
-		NDirector = nDirector;
+		this.cDirector = cDirector;
+		this.nDirector = nDirector;
 	}
 
-	public int getCDirector() {
-		return CDirector;
+	public int getcDirector() {
+		return cDirector;
 	}
 
-	public void setCDirector(int cDirector) {
-		CDirector = cDirector;
+	public void setcDirector(int cDirector) {
+		this.cDirector = cDirector;
 	}
 
-	public String getNDirector() {
-		return NDirector;
+	public String getnDirector() {
+		return nDirector;
 	}
 
-	public void setNDirector(String nDirector) {
-		NDirector = nDirector;
+	public void setnDirector(String nDirector) {
+		this.nDirector = nDirector;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + CDirector;
-		result = prime * result + ((NDirector == null) ? 0 : NDirector.hashCode());
+		result = prime * result + cDirector;
+		result = prime * result + ((nDirector == null) ? 0 : nDirector.hashCode());
 		return result;
 	}
 
@@ -67,12 +67,12 @@ public class Director implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Director other = (Director) obj;
-		if (CDirector != other.CDirector)
+		if (cDirector != other.cDirector)
 			return false;
-		if (NDirector == null) {
-			if (other.NDirector != null)
+		if (nDirector == null) {
+			if (other.nDirector != null)
 				return false;
-		} else if (!NDirector.equals(other.NDirector))
+		} else if (!nDirector.equals(other.nDirector))
 			return false;
 		return true;
 	}

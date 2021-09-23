@@ -50,7 +50,7 @@ public class DirectorController implements Serializable {
 	}
 
 	public void eliminar(Director director) {
-		dService.eliminar(director.getCDirector());
+		dService.eliminar(director.getcDirector());
 		this.listarDirector();
 	}
 

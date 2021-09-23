@@ -19,14 +19,14 @@ public class Comunidad implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CComunidad;
+	private int cComunidad;
 
 	@ManyToOne
-	@JoinColumn(name = "CTema", nullable = false)
+	@JoinColumn(name = "cTema", nullable = false)
 	private Tema tema;
 	
 	@Column(name="nombreComunidad", nullable=false, length=60)
-	private String NComunidad;
+	private String nComunidad;
 
 	public Comunidad() {
 		super();
@@ -35,17 +35,17 @@ public class Comunidad implements Serializable {
 
 	public Comunidad(int cComunidad, Tema tema, String nComunidad) {
 		super();
-		CComunidad = cComunidad;
+		this.cComunidad = cComunidad;
 		this.tema = tema;
-		NComunidad = nComunidad;
+		this.nComunidad = nComunidad;
 	}
 
-	public int getCComunidad() {
-		return CComunidad;
+	public int getcComunidad() {
+		return cComunidad;
 	}
 
-	public void setCComunidad(int cComunidad) {
-		CComunidad = cComunidad;
+	public void setcComunidad(int cComunidad) {
+		this.cComunidad = cComunidad;
 	}
 
 	public Tema getTema() {
@@ -56,20 +56,20 @@ public class Comunidad implements Serializable {
 		this.tema = tema;
 	}
 
-	public String getNComunidad() {
-		return NComunidad;
+	public String getnComunidad() {
+		return nComunidad;
 	}
 
-	public void setNComunidad(String nComunidad) {
-		NComunidad = nComunidad;
+	public void setnComunidad(String nComunidad) {
+		this.nComunidad = nComunidad;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + CComunidad;
-		result = prime * result + ((NComunidad == null) ? 0 : NComunidad.hashCode());
+		result = prime * result + cComunidad;
+		result = prime * result + ((nComunidad == null) ? 0 : nComunidad.hashCode());
 		result = prime * result + ((tema == null) ? 0 : tema.hashCode());
 		return result;
 	}
@@ -83,12 +83,12 @@ public class Comunidad implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Comunidad other = (Comunidad) obj;
-		if (CComunidad != other.CComunidad)
+		if (cComunidad != other.cComunidad)
 			return false;
-		if (NComunidad == null) {
-			if (other.NComunidad != null)
+		if (nComunidad == null) {
+			if (other.nComunidad != null)
 				return false;
-		} else if (!NComunidad.equals(other.NComunidad))
+		} else if (!nComunidad.equals(other.nComunidad))
 			return false;
 		if (tema == null) {
 			if (other.tema != null)

@@ -28,7 +28,7 @@ public class PublicacionDaoImpl implements IPublicacionDao, Serializable{
 	@Override
 	public List<Publicacion> listar() {
 		List<Publicacion> lista = new ArrayList<Publicacion>();
-		Query q = em.createQuery("select m from Publicacion m");
+		Query q = em.createQuery("select p from Publicacion p");
 		lista = (List<Publicacion>) q.getResultList();
 		return lista;
 	}

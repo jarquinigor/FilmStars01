@@ -12,45 +12,45 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Usuario_Comunidad")
-public class Usuario_Comunidad implements Serializable {
+@Table(name="UsuarioComunidad")
+public class UsuarioComunidad implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CUsuario_Comunidad;
+	private int cUsuarioComunidad;
 
 	@ManyToOne
-	@JoinColumn(name = "CUsuario", nullable = false)
+	@JoinColumn(name = "cUsuario", nullable = false)
 	private Usuario usuario;
 
 	@ManyToOne
-	@JoinColumn(name = "CComunidad", nullable = false)
+	@JoinColumn(name = "cComunidad", nullable = false)
 	private Comunidad comunidad;
 	
 	@Column(name="comunidadFuncion", nullable=false)
-	private int FFuncionComunidad;
+	private int fFuncionComunidad;
 
-	public Usuario_Comunidad() {
+	public UsuarioComunidad() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario_Comunidad(int cUsuario_Comunidad, Usuario usuario, Comunidad comunidad, int fFuncionComunidad) {
+	public UsuarioComunidad(int cUsuarioComunidad, Usuario usuario, Comunidad comunidad, int fFuncionComunidad) {
 		super();
-		CUsuario_Comunidad = cUsuario_Comunidad;
+		this.cUsuarioComunidad = cUsuarioComunidad;
 		this.usuario = usuario;
 		this.comunidad = comunidad;
-		FFuncionComunidad = fFuncionComunidad;
+		this.fFuncionComunidad = fFuncionComunidad;
 	}
 
-	public int getCUsuario_Comunidad() {
-		return CUsuario_Comunidad;
+	public int getcUsuarioComunidad() {
+		return cUsuarioComunidad;
 	}
 
-	public void setCUsuario_Comunidad(int cUsuario_Comunidad) {
-		CUsuario_Comunidad = cUsuario_Comunidad;
+	public void setcUsuarioComunidad(int cUsuarioComunidad) {
+		this.cUsuarioComunidad = cUsuarioComunidad;
 	}
 
 	public Usuario getUsuario() {
@@ -69,11 +69,11 @@ public class Usuario_Comunidad implements Serializable {
 		this.comunidad = comunidad;
 	}
 
-	public int getFFuncionComunidad() {
-		return FFuncionComunidad;
+	public int getfFuncionComunidad() {
+		return fFuncionComunidad;
 	}
 
-	public void setFFuncionComunidad(int fFuncionComunidad) {
-		FFuncionComunidad = fFuncionComunidad;
+	public void setfFuncionComunidad(int fFuncionComunidad) {
+		this.fFuncionComunidad = fFuncionComunidad;
 	}
 }

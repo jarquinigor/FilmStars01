@@ -7,5 +7,5 @@ import pe.edu.upc.entity.TextoCritica;
 public interface ITextoCriticaService {
 	public void insertar(TextoCritica textoCritica);
 	public List<TextoCritica> listar();
-	public void eliminar(int CTextoCritica);
+	public void eliminar(int cTextoCritica);
 }

@@ -7,5 +7,5 @@ import pe.edu.upc.entity.Usuario;
 public interface IUsuarioService {
 	public void insertar(Usuario usuario);
 	public List<Usuario> listar();
-	public void eliminar(int CUsuario);
+	public void eliminar(int cUsuario);
 }

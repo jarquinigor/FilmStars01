@@ -17,43 +17,44 @@ public class Critico implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CCritico;
+	private int cCritico;
 	
 	@Column(name="nombreCritico", nullable=false, length=60)
-	private String NCritico;
+	private String nCritico;
 
 	public Critico() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Critico(int CCritico, String NCritico) {
+	public Critico(int cCritico, String nCritico) {
 		super();
-		this.CCritico = CCritico;
-		this.NCritico = NCritico;
+		this.cCritico = cCritico;
+		this.nCritico = nCritico;
 	}
 
-	public int getCCritico() {
-		return CCritico;
+	public int getcCritico() {
+		return cCritico;
 	}
 
-	public void setCCritico(int cCritico) {
-		CCritico = cCritico;
+	public void setcCritico(int cCritico) {
+		this.cCritico = cCritico;
 	}
 
-	public String getNCritico() {
-		return NCritico;
+	public String getnCritico() {
+		return nCritico;
 	}
 
-	public void setNCritico(String nCritico) {
-		NCritico = nCritico;
+	public void setnCritico(String nCritico) {
+		this.nCritico = nCritico;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + CCritico;
-		result = prime * result + ((NCritico == null) ? 0 : NCritico.hashCode());
+		result = prime * result + cCritico;
+		result = prime * result + ((nCritico == null) ? 0 : nCritico.hashCode());
 		return result;
 	}
 
@@ -66,12 +67,12 @@ public class Critico implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Critico other = (Critico) obj;
-		if (CCritico != other.CCritico)
+		if (cCritico != other.cCritico)
 			return false;
-		if (NCritico == null) {
-			if (other.NCritico != null)
+		if (nCritico == null) {
+			if (other.nCritico != null)
 				return false;
-		} else if (!NCritico.equals(other.NCritico))
+		} else if (!nCritico.equals(other.nCritico))
 			return false;
 		return true;
 	}

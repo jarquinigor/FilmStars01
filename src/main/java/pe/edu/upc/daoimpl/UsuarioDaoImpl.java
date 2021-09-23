@@ -28,7 +28,7 @@ public class UsuarioDaoImpl implements IUsuarioDao, Serializable{
 	@Override
 	public List<Usuario> listar() {
 		List<Usuario> lista = new ArrayList<Usuario>();
-		Query q = em.createQuery("select m from Usuario m");
+		Query q = em.createQuery("select u from Usuario u");
 		lista = (List<Usuario>) q.getResultList();
 		return lista;
 	}
