@@ -19,21 +19,21 @@ public class Rating implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CRating;
+	private int cRating;
 
 	@ManyToOne
-	@JoinColumn(name = "CPelicula", nullable = false)
+	@JoinColumn(name = "cPelicula", nullable = false)
 	private Pelicula pelicula;
 
 	@ManyToOne
-	@JoinColumn(name = "CUsuario", nullable = false)
+	@JoinColumn(name = "cUsuario", nullable = false)
 	private Usuario usuario;
 	
 	@Column(name="rateRating", nullable=false)
-	private int QRate;
+	private int qRate;
 	
 	@Column(name="comentarioRating", nullable=false, length=400)
-	private String TRatingComentario;
+	private String tRatingComentario;
 
 	public Rating() {
 		super();
@@ -42,19 +42,19 @@ public class Rating implements Serializable {
 
 	public Rating(int cRating, Pelicula pelicula, Usuario usuario, int qRate, String tRatingComentario) {
 		super();
-		CRating = cRating;
+		this.cRating = cRating;
 		this.pelicula = pelicula;
 		this.usuario = usuario;
-		QRate = qRate;
-		TRatingComentario = tRatingComentario;
+		this.qRate = qRate;
+		this.tRatingComentario = tRatingComentario;
 	}
 
-	public int getCRating() {
-		return CRating;
+	public int getcRating() {
+		return cRating;
 	}
 
-	public void setCRating(int cRating) {
-		CRating = cRating;
+	public void setcRating(int cRating) {
+		this.cRating = cRating;
 	}
 
 	public Pelicula getPelicula() {
@@ -73,19 +73,19 @@ public class Rating implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public int getQRate() {
-		return QRate;
+	public int getqRate() {
+		return qRate;
 	}
 
-	public void setQRate(int qRate) {
-		QRate = qRate;
+	public void setqRate(int qRate) {
+		this.qRate = qRate;
 	}
 
-	public String getTRatingComentario() {
-		return TRatingComentario;
+	public String gettRatingComentario() {
+		return tRatingComentario;
 	}
 
-	public void setTRatingComentario(String tRatingComentario) {
-		TRatingComentario = tRatingComentario;
+	public void settRatingComentario(String tRatingComentario) {
+		this.tRatingComentario = tRatingComentario;
 	}
 }

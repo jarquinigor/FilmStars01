@@ -17,10 +17,10 @@ public class Genero implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CGenero;
+	private int cGenero;
 	
 	@Column(name="nombreGenero", nullable=false, length=30)
-	private String NGenero;
+	private String nGenero;
 
 	public Genero() {
 		super();
@@ -29,32 +29,32 @@ public class Genero implements Serializable{
 
 	public Genero(int cGenero, String nGenero) {
 		super();
-		CGenero = cGenero;
-		NGenero = nGenero;
+		this.cGenero = cGenero;
+		this.nGenero = nGenero;
 	}
 
-	public int getCGenero() {
-		return CGenero;
+	public int getcGenero() {
+		return cGenero;
 	}
 
-	public void setCGenero(int cGenero) {
-		CGenero = cGenero;
+	public void setcGenero(int cGenero) {
+		this.cGenero = cGenero;
 	}
 
-	public String getNGenero() {
-		return NGenero;
+	public String getnGenero() {
+		return nGenero;
 	}
 
-	public void setNGenero(String nGenero) {
-		NGenero = nGenero;
+	public void setnGenero(String nGenero) {
+		this.nGenero = nGenero;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + CGenero;
-		result = prime * result + ((NGenero == null) ? 0 : NGenero.hashCode());
+		result = prime * result + cGenero;
+		result = prime * result + ((nGenero == null) ? 0 : nGenero.hashCode());
 		return result;
 	}
 
@@ -67,12 +67,12 @@ public class Genero implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Genero other = (Genero) obj;
-		if (CGenero != other.CGenero)
+		if (cGenero != other.cGenero)
 			return false;
-		if (NGenero == null) {
-			if (other.NGenero != null)
+		if (nGenero == null) {
+			if (other.nGenero != null)
 				return false;
-		} else if (!NGenero.equals(other.NGenero))
+		} else if (!nGenero.equals(other.nGenero))
 			return false;
 		return true;
 	}

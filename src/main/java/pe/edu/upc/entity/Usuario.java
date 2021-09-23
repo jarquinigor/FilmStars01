@@ -17,16 +17,16 @@ private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CUsuario;
+	private int cUsuario;
 	
 	@Column(name="nombreUsuario", nullable=false, length=60)
-	private String NUsuario;
+	private String nUsuario;
 	
 	@Column(name="nombreEmail", nullable=false, length=60)
-	private String NEmail;
+	private String nEmail;
 	
 	@Column(name="nombrePassword", nullable=false, length=30)
-	private String NPassword;
+	private String nPassword;
 
 	public Usuario() {
 		super();
@@ -35,52 +35,52 @@ private static final long serialVersionUID = 1L;
 
 	public Usuario(int cUsuario, String nUsuario, String nEmail, String nPassword) {
 		super();
-		CUsuario = cUsuario;
-		NUsuario = nUsuario;
-		NEmail = nEmail;
-		NPassword = nPassword;
+		this.cUsuario = cUsuario;
+		this.nUsuario = nUsuario;
+		this.nEmail = nEmail;
+		this.nPassword = nPassword;
 	}
 
-	public int getCUsuario() {
-		return CUsuario;
+	public int getcUsuario() {
+		return cUsuario;
 	}
 
-	public void setCUsuario(int cUsuario) {
-		CUsuario = cUsuario;
+	public void setcUsuario(int cUsuario) {
+		this.cUsuario = cUsuario;
 	}
 
-	public String getNUsuario() {
-		return NUsuario;
+	public String getnUsuario() {
+		return nUsuario;
 	}
 
-	public void setNUsuario(String nUsuario) {
-		NUsuario = nUsuario;
+	public void setnUsuario(String nUsuario) {
+		this.nUsuario = nUsuario;
 	}
 
-	public String getNEmail() {
-		return NEmail;
+	public String getnEmail() {
+		return nEmail;
 	}
 
-	public void setNEmail(String nEmail) {
-		NEmail = nEmail;
+	public void setnEmail(String nEmail) {
+		this.nEmail = nEmail;
 	}
 
-	public String getNPassword() {
-		return NPassword;
+	public String getnPassword() {
+		return nPassword;
 	}
 
-	public void setNPassword(String nPassword) {
-		NPassword = nPassword;
+	public void setnPassword(String nPassword) {
+		this.nPassword = nPassword;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + CUsuario;
-		result = prime * result + ((NEmail == null) ? 0 : NEmail.hashCode());
-		result = prime * result + ((NPassword == null) ? 0 : NPassword.hashCode());
-		result = prime * result + ((NUsuario == null) ? 0 : NUsuario.hashCode());
+		result = prime * result + cUsuario;
+		result = prime * result + ((nEmail == null) ? 0 : nEmail.hashCode());
+		result = prime * result + ((nPassword == null) ? 0 : nPassword.hashCode());
+		result = prime * result + ((nUsuario == null) ? 0 : nUsuario.hashCode());
 		return result;
 	}
 
@@ -93,22 +93,22 @@ private static final long serialVersionUID = 1L;
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (CUsuario != other.CUsuario)
+		if (cUsuario != other.cUsuario)
 			return false;
-		if (NEmail == null) {
-			if (other.NEmail != null)
+		if (nEmail == null) {
+			if (other.nEmail != null)
 				return false;
-		} else if (!NEmail.equals(other.NEmail))
+		} else if (!nEmail.equals(other.nEmail))
 			return false;
-		if (NPassword == null) {
-			if (other.NPassword != null)
+		if (nPassword == null) {
+			if (other.nPassword != null)
 				return false;
-		} else if (!NPassword.equals(other.NPassword))
+		} else if (!nPassword.equals(other.nPassword))
 			return false;
-		if (NUsuario == null) {
-			if (other.NUsuario != null)
+		if (nUsuario == null) {
+			if (other.nUsuario != null)
 				return false;
-		} else if (!NUsuario.equals(other.NUsuario))
+		} else if (!nUsuario.equals(other.nUsuario))
 			return false;
 		return true;
 	}

@@ -28,7 +28,7 @@ public class NoticiaComentarioDaoImpl implements INoticiaComentarioDao, Serializ
 	@Override
 	public List<NoticiaComentario> listar() {
 		List<NoticiaComentario> lista = new ArrayList<NoticiaComentario>();
-		Query q = em.createQuery("select m from NoticiaComentario m");
+		Query q = em.createQuery("select nc from NoticiaComentario nc");
 		lista = (List<NoticiaComentario>) q.getResultList();
 		return lista;
 	}

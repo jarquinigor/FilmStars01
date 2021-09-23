@@ -19,18 +19,18 @@ public class PublicacionComentario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CPublicacionComentario;
+	private int cPublicacionComentario;
 
 	@ManyToOne
-	@JoinColumn(name = "CPublicacion", nullable = false)
+	@JoinColumn(name = "cPublicacion", nullable = false)
 	private Publicacion publicacion;
 	
 	@ManyToOne
-	@JoinColumn(name = "CUsuario", nullable = false)
+	@JoinColumn(name = "cUsuario", nullable = false)
 	private Usuario usuario;
 	
 	@Column(name="comentarioPublicacion", nullable=false, length=400)
-	private String TPublicacionComentario;
+	private String tPublicacionComentario;
 
 	public PublicacionComentario() {
 		super();
@@ -40,18 +40,18 @@ public class PublicacionComentario implements Serializable {
 	public PublicacionComentario(int cPublicacionComentario, Publicacion publicacion, Usuario usuario,
 			String tPublicacionComentario) {
 		super();
-		CPublicacionComentario = cPublicacionComentario;
+		this.cPublicacionComentario = cPublicacionComentario;
 		this.publicacion = publicacion;
 		this.usuario = usuario;
-		TPublicacionComentario = tPublicacionComentario;
+		this.tPublicacionComentario = tPublicacionComentario;
 	}
 
-	public int getCPublicacionComentario() {
-		return CPublicacionComentario;
+	public int getcPublicacionComentario() {
+		return cPublicacionComentario;
 	}
 
-	public void setCPublicacionComentario(int cPublicacionComentario) {
-		CPublicacionComentario = cPublicacionComentario;
+	public void setcPublicacionComentario(int cPublicacionComentario) {
+		this.cPublicacionComentario = cPublicacionComentario;
 	}
 
 	public Publicacion getPublicacion() {
@@ -70,11 +70,11 @@ public class PublicacionComentario implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public String getTPublicacionComentario() {
-		return TPublicacionComentario;
+	public String gettPublicacionComentario() {
+		return tPublicacionComentario;
 	}
 
-	public void setTPublicacionComentario(String tPublicacionComentario) {
-		TPublicacionComentario = tPublicacionComentario;
+	public void settPublicacionComentario(String tPublicacionComentario) {
+		this.tPublicacionComentario = tPublicacionComentario;
 	}
 }

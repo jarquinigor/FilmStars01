@@ -50,7 +50,7 @@ public class CriticoController implements Serializable {
 	}
 
 	public void eliminar(Critico critico) {
-		cService.eliminar(critico.getCCritico());
+		cService.eliminar(critico.getcCritico());
 		this.listarCritico();
 	}
 

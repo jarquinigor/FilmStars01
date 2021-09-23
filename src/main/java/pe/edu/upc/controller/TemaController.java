@@ -50,7 +50,7 @@ public class TemaController implements Serializable {
 	}
 
 	public void eliminar(Tema tema) {
-		tService.eliminar(tema.getCTema());
+		tService.eliminar(tema.getcTema());
 		this.listarTema();
 	}
 

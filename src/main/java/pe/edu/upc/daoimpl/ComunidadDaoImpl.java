@@ -28,7 +28,7 @@ public class ComunidadDaoImpl implements IComunidadDao, Serializable{
 	@Override
 	public List<Comunidad> listar() {
 		List<Comunidad> lista = new ArrayList<Comunidad>();
-		Query q = em.createQuery("select a from Comunidad a");
+		Query q = em.createQuery("select c from Comunidad c");
 		lista = (List<Comunidad>) q.getResultList();
 		return lista;
 	}

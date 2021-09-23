@@ -11,16 +11,16 @@ import javax.inject.Named;
 
 import pe.edu.upc.entity.Usuario;
 import pe.edu.upc.entity.Comunidad;
-import pe.edu.upc.entity.Usuario_Comunidad;
+import pe.edu.upc.entity.UsuarioComunidad;
 
 import pe.edu.upc.service.IUsuarioService;
 import pe.edu.upc.service.IComunidadService;
-import pe.edu.upc.service.IUsuario_ComunidadService;
+import pe.edu.upc.service.IUsuarioComunidadService;
 
 @Named
 @RequestScoped
 
-public class Usuario_ComunidadController implements Serializable{
+public class UsuarioComunidadController implements Serializable{
 
 	private static final long serialVersionUID = -3351318371418292111L;
 	
@@ -31,40 +31,40 @@ public class Usuario_ComunidadController implements Serializable{
 	private IComunidadService cService;
 	
 	@Inject
-	private IUsuario_ComunidadService ucService;
+	private IUsuarioComunidadService ucService;
 	
 	private Usuario usuario;
 	private Comunidad comunidad;
-	private Usuario_Comunidad usuario_comunidad;
+	private UsuarioComunidad usuarioComunidad;
 	
 	List<Usuario> listaUsuarios;
 	List<Comunidad> listaComunidades;
-	List<Usuario_Comunidad> listaUsuario_Comunidad;
+	List<UsuarioComunidad> listaUsuarioComunidad;
 	
 	@PostConstruct
 	public void init() {
 		this.listaUsuarios = new ArrayList<Usuario>();
 		this.listaComunidades = new ArrayList<Comunidad>();
-		this.listaUsuario_Comunidad = new ArrayList<Usuario_Comunidad>();
+		this.listaUsuarioComunidad = new ArrayList<UsuarioComunidad>();
 		
 		this.usuario = new Usuario();
 		this.comunidad = new Comunidad();
-		this.usuario_comunidad = new Usuario_Comunidad();
+		this.usuarioComunidad = new UsuarioComunidad();
 		
 		this.listarUsuario();
 		this.listarComunidad();
-		this.listarUsuario_Comunidad();
+		this.listarUsuarioComunidad();
 	}
 	
 	public String nuevoUsuario_Comunidad() {
-		this.setUsuario_Comunidad(new Usuario_Comunidad());
-		return "usuario_comunidad.xhtml";
+		this.setUsuarioComunidad(new UsuarioComunidad());
+		return "usuariocomunidad.xhtml";
 	}
 	
 	public void insertar() {
-		ucService.insertar(usuario_comunidad);
-		limpiarUsuario_Comunidad();
-		this.listarUsuario_Comunidad(); //VERIFICAR
+		ucService.insertar(usuarioComunidad);
+		limpiarUsuarioComunidad();
+		this.listarUsuarioComunidad();
 	}
 	
 	public void listarUsuario() {
@@ -73,17 +73,17 @@ public class Usuario_ComunidadController implements Serializable{
 	public void listarComunidad() {
 		listaComunidades = cService.listar();
 	}
-	public void listarUsuario_Comunidad() {
-		listaUsuario_Comunidad = ucService.listar();
+	public void listarUsuarioComunidad() {
+		listaUsuarioComunidad = ucService.listar();
 	}
 	
-	public void limpiarUsuario_Comunidad() {
+	public void limpiarUsuarioComunidad() {
 		this.init();
 	}
 	
-	public void eliminar(Usuario_Comunidad usuario_comunidad) {
-		ucService.eliminar(usuario_comunidad.getCUsuario_Comunidad());
-		this.listarUsuario_Comunidad();
+	public void eliminar(UsuarioComunidad usuario_comunidad) {
+		ucService.eliminar(usuario_comunidad.getcUsuarioComunidad());
+		this.listarUsuarioComunidad();
 	}
 
 	public Usuario getUsuario() {
@@ -102,12 +102,12 @@ public class Usuario_ComunidadController implements Serializable{
 		this.comunidad = comunidad;
 	}
 
-	public Usuario_Comunidad getUsuario_Comunidad() {
-		return usuario_comunidad;
+	public UsuarioComunidad getUsuarioComunidad() {
+		return usuarioComunidad;
 	}
 
-	public void setUsuario_Comunidad(Usuario_Comunidad usuario_comunidad) {
-		this.usuario_comunidad = usuario_comunidad;
+	public void setUsuarioComunidad(UsuarioComunidad usuarioComunidad) {
+		this.usuarioComunidad = usuarioComunidad;
 	}
 
 	public List<Usuario> getListaUsuarios() {
@@ -126,11 +126,11 @@ public class Usuario_ComunidadController implements Serializable{
 		this.listaComunidades = listaComunidades;
 	}
 
-	public List<Usuario_Comunidad> getListaUsuario_Comunidad() {
-		return listaUsuario_Comunidad;
+	public List<UsuarioComunidad> getListaUsuarioComunidad() {
+		return listaUsuarioComunidad;
 	}
 
-	public void setListaUsuario_Comunidad(List<Usuario_Comunidad> listaUsuario_Comunidad) {
-		this.listaUsuario_Comunidad = listaUsuario_Comunidad;
+	public void setListaUsuarioComunidad(List<UsuarioComunidad> listaUsuarioComunidad) {
+		this.listaUsuarioComunidad = listaUsuarioComunidad;
 	}
 }

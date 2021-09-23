@@ -28,7 +28,7 @@ public class GeneroDaoImpl implements IGeneroDao, Serializable{
 	@Override
 	public List<Genero> listar() {
 		List<Genero> lista = new ArrayList<Genero>();
-		Query q = em.createQuery("select m from Genero m");
+		Query q = em.createQuery("select g from Genero g");
 		lista = (List<Genero>) q.getResultList();
 		return lista;
 	}

@@ -50,7 +50,7 @@ public class ActorController implements Serializable{
 	}
 	
 	public void eliminar(Actor actor) {
-		aService.eliminar(actor.getCActor());
+		aService.eliminar(actor.getcActor());
 		this.listarActor();
 	}
 	

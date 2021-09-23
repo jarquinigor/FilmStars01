@@ -82,7 +82,7 @@ public class RatingController implements Serializable{
 	}
 	
 	public void eliminar(Rating rating) {
-		rService.eliminar(rating.getCRating());
+		rService.eliminar(rating.getcRating());
 		this.listarRating();
 	}
 

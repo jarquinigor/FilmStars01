@@ -19,20 +19,19 @@ public class NoticiaComentario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int CNoticiaComentario;
+	private int cNoticiaComentario;
 
 	@ManyToOne
-	@JoinColumn(name = "CNoticia", nullable = false)
+	@JoinColumn(name = "cNoticia", nullable = false)
 	private Noticia noticia;
 
 	@ManyToOne
-	@JoinColumn(name = "CUsuario", nullable = false)
+	@JoinColumn(name = "cUsuario", nullable = false)
 	private Usuario usuario;
 	
 	@Column(name="comentarioNoticia", nullable=false, length=400)
-	private String TNoticiaComentario;
+	private String tNoticiaComentario;
 
-	
 	public NoticiaComentario() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -40,18 +39,18 @@ public class NoticiaComentario implements Serializable {
 
 	public NoticiaComentario(int cNoticiaComentario, Noticia noticia, Usuario usuario, String tNoticiaComentario) {
 		super();
-		CNoticiaComentario = cNoticiaComentario;
+		this.cNoticiaComentario = cNoticiaComentario;
 		this.noticia = noticia;
 		this.usuario = usuario;
-		TNoticiaComentario = tNoticiaComentario;
+		this.tNoticiaComentario = tNoticiaComentario;
 	}
 
-	public int getCNoticiaComentario() {
-		return CNoticiaComentario;
+	public int getcNoticiaComentario() {
+		return cNoticiaComentario;
 	}
 
-	public void setCNoticiaComentario(int cNoticiaComentario) {
-		CNoticiaComentario = cNoticiaComentario;
+	public void setcNoticiaComentario(int cNoticiaComentario) {
+		this.cNoticiaComentario = cNoticiaComentario;
 	}
 
 	public Noticia getNoticia() {
@@ -70,11 +69,11 @@ public class NoticiaComentario implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public String getTNoticiaComentario() {
-		return TNoticiaComentario;
+	public String gettNoticiaComentario() {
+		return tNoticiaComentario;
 	}
 
-	public void setTNoticiaComentario(String tNoticiaComentario) {
-		TNoticiaComentario = tNoticiaComentario;
+	public void settNoticiaComentario(String tNoticiaComentario) {
+		this.tNoticiaComentario = tNoticiaComentario;
 	}
 }

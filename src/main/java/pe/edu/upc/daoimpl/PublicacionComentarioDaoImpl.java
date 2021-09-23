@@ -28,7 +28,7 @@ public class PublicacionComentarioDaoImpl implements IPublicacionComentarioDao, 
 	@Override
 	public List<PublicacionComentario> listar() {
 		List<PublicacionComentario> lista = new ArrayList<PublicacionComentario>();
-		Query q = em.createQuery("select m from PublicacionComentario m");
+		Query q = em.createQuery("select pc from PublicacionComentario pc");
 		lista = (List<PublicacionComentario>) q.getResultList();
 		return lista;
 	}
