@@ -3,12 +3,16 @@ package pe.edu.upc.entity;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="Pelicula")
 public class Pelicula implements Serializable{
 
 private static final long serialVersionUID = 1L;
@@ -30,6 +34,9 @@ private static final long serialVersionUID = 1L;
 	@Column(name="argumentoPelicula", nullable=false, length=800)
 	private String TPeliculaArgumento;
 	
+	@Column(name="portadaPelicula", nullable=false, length=200)
+	private String TPeliculaPortada;
+	
 	@Column(name="imagenPelicula", nullable=false, length=200)
 	private String TPeliculaImagen;
 
@@ -39,13 +46,14 @@ private static final long serialVersionUID = 1L;
 	}
 
 	public Pelicula(int cPelicula, Director director, String nPelicula, String tPeliculaSinopsis,
-			String tPeliculaArgumento, String tPeliculaImagen) {
+			String tPeliculaArgumento, String tPeliculaPortada, String tPeliculaImagen) {
 		super();
 		CPelicula = cPelicula;
 		this.director = director;
 		NPelicula = nPelicula;
 		TPeliculaSinopsis = tPeliculaSinopsis;
 		TPeliculaArgumento = tPeliculaArgumento;
+		TPeliculaPortada = tPeliculaPortada;
 		TPeliculaImagen = tPeliculaImagen;
 	}
 
@@ -89,6 +97,14 @@ private static final long serialVersionUID = 1L;
 		TPeliculaArgumento = tPeliculaArgumento;
 	}
 
+	public String getTPeliculaPortada() {
+		return TPeliculaPortada;
+	}
+
+	public void setTPeliculaPortada(String tPeliculaPortada) {
+		TPeliculaPortada = tPeliculaPortada;
+	}
+
 	public String getTPeliculaImagen() {
 		return TPeliculaImagen;
 	}
@@ -105,6 +121,7 @@ private static final long serialVersionUID = 1L;
 		result = prime * result + ((NPelicula == null) ? 0 : NPelicula.hashCode());
 		result = prime * result + ((TPeliculaArgumento == null) ? 0 : TPeliculaArgumento.hashCode());
 		result = prime * result + ((TPeliculaImagen == null) ? 0 : TPeliculaImagen.hashCode());
+		result = prime * result + ((TPeliculaPortada == null) ? 0 : TPeliculaPortada.hashCode());
 		result = prime * result + ((TPeliculaSinopsis == null) ? 0 : TPeliculaSinopsis.hashCode());
 		result = prime * result + ((director == null) ? 0 : director.hashCode());
 		return result;
@@ -135,6 +152,11 @@ private static final long serialVersionUID = 1L;
 			if (other.TPeliculaImagen != null)
 				return false;
 		} else if (!TPeliculaImagen.equals(other.TPeliculaImagen))
+			return false;
+		if (TPeliculaPortada == null) {
+			if (other.TPeliculaPortada != null)
+				return false;
+		} else if (!TPeliculaPortada.equals(other.TPeliculaPortada))
 			return false;
 		if (TPeliculaSinopsis == null) {
 			if (other.TPeliculaSinopsis != null)
