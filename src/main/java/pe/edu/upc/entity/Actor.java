@@ -17,34 +17,62 @@ public class Actor implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int CActor;
 	
-	@Column(name="nombreActor", nullable=false, length=50)
-	private String nombreActor;
+	@Column(name="nombreActor", nullable=false, length=60)
+	private String NActor;
 
 	public Actor() {
 		super();
 	}
 
-	public Actor(int id, String nombreActor) {
+	public Actor(int CActor, String NActor) {
 		super();
-		this.id = id;
-		this.nombreActor = nombreActor;
+		this.CActor = CActor;
+		this.NActor = NActor;
+	}
+	
+	public int getCActor() {
+		return CActor;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
+	public void setCActor(int CActor) {
+		this.CActor = CActor;
 	}
 
 	public String getNombreActor() {
-		return nombreActor;
+		return NActor;
 	}
 
 	public void setNombreActor(String nombreActor) {
-		this.nombreActor = nombreActor;
+		this.NActor = nombreActor;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + CActor;
+		result = prime * result + ((NActor == null) ? 0 : NActor.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Actor other = (Actor) obj;
+		if (CActor != other.CActor)
+			return false;
+		if (NActor == null) {
+			if (other.NActor != null)
+				return false;
+		} else if (!NActor.equals(other.NActor))
+			return false;
+		return true;
 	}
 }
