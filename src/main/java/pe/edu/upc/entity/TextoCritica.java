@@ -27,7 +27,7 @@ public class TextoCritica implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "cCritico", nullable = false)
-	private Genero critico;
+	private Critico critico;
 	
 	@Column(name="textoCritica", nullable=false, length=400)
 	private String tCritica;
@@ -37,7 +37,7 @@ public class TextoCritica implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public TextoCritica(int cTextoCritica, Pelicula pelicula, Genero critico, String tCritica) {
+	public TextoCritica(int cTextoCritica, Pelicula pelicula, Critico critico, String tCritica) {
 		super();
 		this.cTextoCritica = cTextoCritica;
 		this.pelicula = pelicula;
@@ -61,11 +61,11 @@ public class TextoCritica implements Serializable {
 		this.pelicula = pelicula;
 	}
 
-	public Genero getCritico() {
+	public Critico getCritico() {
 		return critico;
 	}
 
-	public void setCritico(Genero critico) {
+	public void setCritico(Critico critico) {
 		this.critico = critico;
 	}
 

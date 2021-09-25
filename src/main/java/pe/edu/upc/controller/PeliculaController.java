@@ -57,7 +57,7 @@ public class PeliculaController implements Serializable{
 		this.listarPelicula();
 	}
 	
-	public void listarDirector() {               // Se repite listarMotor() o ListarParte()
+	public void listarDirector() {
 		listaDirectores = dService.listar();
 	}
 	public void listarPelicula() {            

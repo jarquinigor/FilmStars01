@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        Registro de noticias
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>NOTICIA</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="cNoticia" value="ID de la noticia: " styleClass="control-label" />
+			<p:inputText autocomplete="off" id="cNoticia"
+				styleClass="form-control" value="#{noticiaController.noticia.cNoticia}"
+				required="true" />
+		<br />
+		<br />
+			<h:outputLabel for="nNoticiaTitulo" value="Título: " styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nNoticiaTitulo"
+				styleClass="form-control" value="#{noticiaController.noticia.nNoticiaTitulo}"
+				required="true" />
+		<br />
+		<br />
+			<h:outputLabel for="nNoticiaSubtitulo" value="Subtítulo: " styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nNoticiaSubtitulo"
+				styleClass="form-control" value="#{noticiaController.noticia.nNoticiaSubtitulo}"
+				required="true" />
+		<br />
+		<br />
+			<h:outputLabel for="tNoticia" value="Texto: " styleClass="control-label" />
+			<p:inputText autocomplete="off" id="tNoticia"
+				styleClass="form-control" value="#{noticiaController.noticia.tNoticia}"
+				required="true" />
+		<br />
+		<br />
+			<h:outputLabel for="tNoticiaImagen" value="Imagen (URL): " styleClass="control-label" />
+			<p:inputText autocomplete="off" id="tNoticiaImagen"
+				styleClass="form-control" value="#{noticiaController.noticia.tNoticiaImagen}"
+				required="true" />
+		<br />
+		<br />
+			<p:commandButton value="Registrar"
+				actionListener="#{noticiaController.insertar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listNoticia?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
+			<p:commandButton value="Volver"
+				action="panel?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+				
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+		<br />
+		<br />
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstNoticia" var="noti"
+							value="#{noticiaController.listaNoticias}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen noticias registradas actualmente." rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="ID" sortBy="#{noti.cNoticia}">
+								<h:outputText value="#{noti.cNoticia}" />
+							</p:column>
+
+							<p:column headerText="Título" sortBy="#{noti.nNoticiaTitulo}">
+								<h:outputText value="#{noti.nNoticiaTitulo}" />
+							</p:column>
+							
+							<p:column headerText="Subtítulo" sortBy="#{noti.nNoticiaSubtitulo}">
+								<h:outputText value="#{noti.nNoticiaSubtitulo}" />
+							</p:column>
+							
+							<p:column headerText="Noticia" sortBy="#{noti.tNoticia}">
+								<h:outputText value="#{noti.tNoticia}" />
+							</p:column>
+							
+							<p:column headerText="Imagen" sortBy="#{noti.tNoticiaImagen}">
+								<h:outputText value="#{noti.tNoticiaImagen}" />
+							</p:column>
+							
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="listNoticia" value="Eliminar"
+									actionListener="#{noticiaController.eliminar(noti)}" />
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>				
+			</div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

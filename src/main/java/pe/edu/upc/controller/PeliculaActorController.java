@@ -53,18 +53,18 @@ public class PeliculaActorController implements Serializable{
 		
 		this.listarPelicula();
 		this.listarActor();
-		this.listarPelicula_Actor();
+		this.listarPeliculaActor();
 	}
 	
 	public String nuevoPelicula_Actor() {
 		this.setPeliculaActor(new PeliculaActor());
-		return "pelicula_actor.xhtml";
+		return "peliculaActor.xhtml";
 	}
 	
 	public void insertar() {
 		paService.insertar(peliculaActor);
-		limpiarPelicula_Actor();
-		this.listarPelicula_Actor();
+		limpiarPeliculaActor();
+		this.listarPeliculaActor();
 	}
 	
 	public void listarPelicula() {
@@ -73,17 +73,17 @@ public class PeliculaActorController implements Serializable{
 	public void listarActor() {
 		listaActores = aService.listar();
 	}
-	public void listarPelicula_Actor() {
+	public void listarPeliculaActor() {
 		listaPeliculaActor = paService.listar();
 	}
 	
-	public void limpiarPelicula_Actor() {
+	public void limpiarPeliculaActor() {
 		this.init();
 	}
 	
-	public void eliminar(PeliculaActor pelicula_actor) {
-		paService.eliminar(pelicula_actor.getcPeliculaActor());
-		this.listarPelicula_Actor();
+	public void eliminar(PeliculaActor peliculaactor) {
+		paService.eliminar(peliculaactor.getcPeliculaActor());
+		this.listarPeliculaActor();
 	}
 
 	public Pelicula getPelicula() {

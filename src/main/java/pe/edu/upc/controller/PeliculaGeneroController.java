@@ -58,7 +58,7 @@ public class PeliculaGeneroController implements Serializable{
 	
 	public String nuevoPelicula_Genero() {
 		this.setPeliculaGenero(new PeliculaGenero());
-		return "pelicula_genero.xhtml";
+		return "peliculaGenero.xhtml";
 	}
 	
 	public void insertar() {

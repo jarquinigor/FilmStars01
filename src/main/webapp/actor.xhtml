@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="master.xhtml">
+
+	<ui:define name="title">
+        Registro de actores
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>ACTOR</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="cActor" value="ID del actor" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="cActor"
+				styleClass="form-control" value="#{actorController.actor.cActor}"
+				required="true" />
+		<br />
+		<br />
+			<h:outputLabel for="nActor" value="Nombre del actor"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nActor"
+				styleClass="form-control"
+				value="#{actorController.actor.nActor}" maxlength="40"
+				required="true" />
+		<br />
+		<br />
+			<p:commandButton value="Registrar"
+				actionListener="#{actorController.insertar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listActor?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona al listActor.xhtml -->
+			<p:commandButton value="Volver"
+				action="panel?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+				
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+		<br />
+		<br />
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstActor" var="act"
+							value="#{actorController.listaActores}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No hay ningún actor registrado actualmente." rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="ID" sortBy="#{act.cActor}">
+								<h:outputText value="#{act.cActor}" />
+							</p:column>
+
+							<p:column headerText="Nombre" sortBy="#{act.nActor}">
+								<h:outputText value="#{act.nActor}" />
+							</p:column>
+							
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="listActor" value="Eliminar"
+									actionListener="#{actorController.eliminar(act)}" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+				</div>	
+			</div>
+			
+			<h:graphicImage value = "#{peliculaController.pelicula.tPeliculaPortada}"/>
+			
+			
+		</h:form>
+		
+	</ui:define>
+
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>
