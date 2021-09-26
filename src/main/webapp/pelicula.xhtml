@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+	<ui:composition template="/WEB-INF/templates/masterAdmin.xhtml">
+		
+		<ui:define name="content">
+			
+			<h:form style="color:#FFFFFF; margin-top:6px; font-family:monospace">
+				<h:outputLabel for="cPelicula" value="ID de la película: " styleClass="control-label" style="margin-right:10px"/>
+				<p:inputText autocomplete="off" id="cPelicula"
+					styleClass="form-control" value="#{peliculaController.pelicula.cPelicula}"
+					required="true" />
+				<br />
+				<br />
+				<h:outputLabel for="nPelicula" value="Nombre de la película: " styleClass="control-label" style="margin-right:10px" />							
+				<p:inputText autocomplete="off" id="nPelicula"
+					styleClass="form-control" value="#{peliculaController.pelicula.nPelicula}" maxlength="45"
+					required="true" />
+				<br />
+				<br />
+				<h:outputLabel for="tPeliculaSinopsis" value="Sinopsis: " styleClass="control-label" style="margin-right:10px" />							
+				<p:inputText autocomplete="off" id="tPeliculaSinopsis"
+					styleClass="form-control" value="#{peliculaController.pelicula.tPeliculaSinopsis}" maxlength="45"
+					required="true" />
+				<br />
+				<br />
+				<h:outputLabel for="tPeliculaArgumento" value="Argumento: " styleClass="control-label" style="margin-right:10px" />							
+				<p:inputText autocomplete="off" id="tPeliculaArgumento"
+					styleClass="form-control" value="#{peliculaController.pelicula.tPeliculaArgumento}" maxlength="45"
+					required="true" />
+				<br />
+				<br />
+				<h:outputLabel for="tPeliculaPortada" value="Portada (URL): " styleClass="control-label" style="margin-right:10px" />							
+				<p:inputText autocomplete="off" id="tPeliculaPortada"
+					styleClass="form-control" value="#{peliculaController.pelicula.tPeliculaPortada}" maxlength="45"
+					required="true" />
+				<br />
+				<br />
+				<h:outputLabel for="tPeliculaImagen" value="Imagen (URL): " styleClass="control-label" style="margin-right:10px" />							
+				<p:inputText autocomplete="off" id="tPeliculaImagen"
+					styleClass="form-control" value="#{peliculaController.pelicula.tPeliculaImagen}" maxlength="45"
+					required="true" />
+				<br />
+				<br />
+				<p:outputLabel for="cboDirector" value="Director: " styleClass="control-label" style="margin-right:10px; font-family:monospace; line-height:2.5"/>
+				<p:selectOneMenu id="cboDirector" value="#{peliculaController.pelicula.director}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{peliculaController.listaDirectores}" var = "d" 
+						itemLabel="#{d.nDirector}" itemValue="#{d}"/>
+		
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<br />
+				<p:commandButton value="Registrar"
+					actionListener="#{peliculaController.insertar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="pelicula?faces-redirect=true" />
+				<p:commandButton value="Volver"
+					action="panel?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+				
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+				<br />
+			</h:form>
+			
+			<h:form>
+				
+				<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstPelicula" var="pel"
+							value="#{peliculaController.listaPeliculas}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen películas registradas actualmente." rowIndexVar="item"
+							style="margin-bottom:0; margin-top:20px">
+
+							<p:column headerText="ID" sortBy="#{pel.cPelicula}">
+								<h:outputText value="#{pel.cPelicula}" />
+							</p:column>
+							
+							<p:column headerText="Nombre" sortBy="#{pel.nPelicula}">
+								<h:outputText value="#{pel.nPelicula}" />
+							</p:column>
+							
+							<p:column headerText="Sinopsis" sortBy="#{pel.tPeliculaSinopsis}">
+								<h:outputText value="#{pel.tPeliculaSinopsis}" />
+							</p:column>
+							
+							<p:column headerText="Argumento" sortBy="#{pel.tPeliculaArgumento}">
+								<h:outputText value="#{pel.tPeliculaArgumento}" />
+							</p:column>
+							
+							<p:column headerText="Director">
+								<h:outputText value="#{pel.director.nDirector}" />
+							</p:column>
+							
+							<p:column headerText="Portada" sortBy="#{pel.tPeliculaPortada}">
+								<h:graphicImage value = "#{pel.tPeliculaPortada}" height="50px" width="50px"/>
+							</p:column>
+							
+							<p:column headerText="Imagen" sortBy="#{pel.tPeliculaImagen}">
+								<h:graphicImage value = "#{pel.tPeliculaImagen}" height="50px" width="50px"/>
+							</p:column>
+							
+							<p:column headerText="Operación" exportable="false">	<!-- TODA REQUEST LLEGA AL CONTROLADOR -->
+								<h:commandLink action="listPelicula" value="Eliminar"
+									actionListener="#{peliculaController.eliminar(pel)}" />
+							</p:column>
+							
+						</p:dataTable>
+					</div>
+				</div>				
+			</div>
+				
+			</h:form>
+			
+		</ui:define>
+		
+	</ui:composition>
+	
+</h:body>
+</html>

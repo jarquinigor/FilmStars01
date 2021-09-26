@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+	<ui:composition template="/WEB-INF/templates/masterAdmin.xhtml">
+		
+		<ui:define name="content">
+			
+			<h:form style="color:#FFFFFF; margin-top:6px; font-family:monospace">
+				<p:outputLabel for="cboPelicula" value="Película: " style="margin-right:10px; font-family:monospace; line-height:2.5"/>
+				<p:selectOneMenu id="cboPelicula" value="#{peliculaActorController.peliculaActor.pelicula}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{peliculaActorController.listaPeliculas}" var = "d" 
+						itemLabel="#{d.nPelicula}" itemValue="#{d}"/>
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<h:outputLabel for="nPersonaje" value="Nombre del personaje: " styleClass="control-label" style="margin-right:10px" />							
+				<p:inputText autocomplete="off" id="nPersonaje"
+					styleClass="form-control" value="#{peliculaActorController.peliculaActor.nPersonaje}" maxlength="45"
+					required="true" />
+				<br />
+				<br />
+				<p:outputLabel for="cboActor" value="Actor: " style="margin-right:10px; font-family:monospace; line-height:2.5"/>
+				<p:selectOneMenu id="cboActor" value="#{peliculaActorController.peliculaActor.actor}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{peliculaActorController.listaActores}" var = "d" 
+						itemLabel="#{d.nActor}" itemValue="#{d}"/>
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<p:commandButton value="Registrar"
+					actionListener="#{peliculaActorController.insertar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="peliculaActor?faces-redirect=true" />
+				<p:commandButton value="Volver"
+					action="panel?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+				
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+				<br />
+			</h:form>
+			
+			<h:form>
+				<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstPeliculaActor" var="pelAct"
+							value="#{peliculaActorController.listaPeliculaActor}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen actores asignados a películas." rowIndexVar="item"
+							style="margin-bottom:0; margin-top:20px">
+
+							<p:column headerText="Película">
+								<h:outputText value="#{pelAct.pelicula.nPelicula}" />
+							</p:column>
+							
+							<p:column headerText="Personaje" sortBy="#{pelAct.nPersonaje}">
+								<h:outputText value="#{pelAct.nPersonaje}" />
+							</p:column>
+							
+							<p:column headerText="Actor">
+								<h:outputText value="#{pelAct.actor.nActor}" />
+							</p:column>
+							
+							<p:column headerText="Operación" exportable="false">	<!-- TODA REQUEST LLEGA AL CONTROLADOR -->
+								<h:commandLink action="listPeliculaActor" value="Eliminar"
+									actionListener="#{peliculaActorController.eliminar(pelAct)}" />
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>				
+			</div>
+			</h:form>
+			
+		</ui:define>
+		
+	</ui:composition>
+	
+</h:body>
+</html>

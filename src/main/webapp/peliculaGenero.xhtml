@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+	<ui:composition template="/WEB-INF/templates/masterAdmin.xhtml">
+		
+		<ui:define name="content">
+			
+			<h:form style="color:#FFFFFF; margin-top:6px; font-family:monospace">
+				<p:outputLabel for="cboPelicula" value="Película: " style="margin-right:10px; font-family:monospace; line-height:2.5"/>
+				<p:selectOneMenu id="cboPelicula" value="#{peliculaGeneroController.peliculaGenero.pelicula}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{peliculaGeneroController.listaPeliculas}" var = "d" 
+						itemLabel="#{d.nPelicula}" itemValue="#{d}"/>
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<p:outputLabel for="cboGenero" value="Actor: " style="margin-right:10px; font-family:monospace; line-height:2.5"/>
+				<p:selectOneMenu id="cboGenero" value="#{peliculaGeneroController.peliculaGenero.genero}"
+					converter="omnifaces.SelectItemsConverter">
+					<f:selectItems value="#{peliculaGeneroController.listaGeneros}" var = "d" 
+						itemLabel="#{d.nGenero}" itemValue="#{d}"/>
+				</p:selectOneMenu>
+				<br />
+				<br />
+				<p:commandButton value="Registrar"
+					actionListener="#{peliculaGeneroController.insertar()}"
+					styleClass="btn btn-primary " update="@form"
+					action="peliculaGenero?faces-redirect=true" />
+				<p:commandButton value="Volver"
+					action="panel?faces-redirect=true" immediate="true"
+					styleClass="btn btn-default" ajax="false" />
+				
+				<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+				<br />
+			</h:form>
+			
+			<h:form>
+				<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstPeliculaGenero" var="pelGen"
+							value="#{peliculaGeneroController.listaPeliculaGenero}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen géneros asignados a películas." rowIndexVar="item"
+							style="margin-bottom:0; margin-top:20px">
+
+							<p:column headerText="Película">
+								<h:outputText value="#{pelGen.pelicula.nPelicula}" />
+							</p:column>
+							
+							<p:column headerText="Actor">
+								<h:outputText value="#{pelGen.genero.nGenero}" />
+							</p:column>
+							
+							<p:column headerText="Operación" exportable="false">	<!-- TODA REQUEST LLEGA AL CONTROLADOR -->
+								<h:commandLink action="listPeliculaGenero" value="Eliminar"
+									actionListener="#{peliculaGeneroController.eliminar(pelGen)}" />
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>				
+			</div>
+			</h:form>
+			
+		</ui:define>
+		
+	</ui:composition>
+	
+</h:body>
+</html>

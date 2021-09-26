@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<title><ui:insert name="pageTitle">FilmStars</ui:insert></title>
+	
+	<div class="card">
+		<p:sidebar widgetVar="sidebar1" baseZIndex="10000">
+			<h3>Menu</h3>
+			<p:menu style="width:90%">
+				<p:menuitem value="Inicio" url="panel.xhtml" icon="ui ui-icon-home" />
+				<p:menuitem value="Registrar Actor" url="actor.xhtml" />
+				<p:menuitem value="Registrar Director" url="director.xhtml" />
+				<p:menuitem value="Registrar Critico" url="critico.xhtml" />
+				<p:menuitem value="Registrar Texto Critica" url="textoCritica.xhtml" />
+				<p:menuitem value="Registrar Pelicula" url="pelicula.xhtml" />
+				<p:menuitem value="Registrar Pelicula Actor" url="peliculaActor.xhtml" />
+				<p:menuitem value="Registrar Pelicula Genero" url="peliculaGenero.xhtml" />
+				<p:menuitem value="Registrar Noticia" url="noticia.xhtml" />
+			</p:menu>
+		</p:sidebar>
+		<p:commandButton icon="ui ui-icon-hamburger" type="button" onclick="PF('sidebar1').show()" value="Menu" style="float:left; margin-right:10px; margin-top:6px"/>
+	</div>
+	
+	
+	<img src="./resources/img/logo.png" style="width:104px"/>
+	<ui:insert name="headCont"></ui:insert>
+	
+</h:head>
+
+<h:body style="background-color:rgba(34, 34, 34, 1)">
+	<ui:insert name="content">
+
+	</ui:insert>
+</h:body>
+	
+</html>
