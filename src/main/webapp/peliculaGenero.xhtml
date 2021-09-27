@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+<<<<<<< HEAD
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -42,6 +43,52 @@
 			
 			<h:form>
 				<div class="row">
+=======
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="masterAdmin.xhtml">
+
+	<ui:define name="title">
+        Asignar géneros a una película
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>PELÍCULA-GENERO</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:outputLabel for="cboPelicula" value="Película: "/>
+			<p:selectOneMenu id="cboPelicula" value="#{peliculaGeneroController.peliculaGenero.pelicula}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{peliculaGeneroController.listaPeliculas}" var = "d" 
+					itemLabel="#{d.nPelicula}" itemValue="#{d}"/>
+			</p:selectOneMenu>
+		<br />
+		<br />
+			<p:outputLabel for="cboGenero" value="Actor: "/>
+			<p:selectOneMenu id="cboGenero" value="#{peliculaGeneroController.peliculaGenero.genero}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{peliculaGeneroController.listaGeneros}" var = "d" 
+					itemLabel="#{d.nGenero}" itemValue="#{d}"/>
+			</p:selectOneMenu>
+		<br />
+		<br />
+			<p:commandButton value="Registrar"
+				actionListener="#{peliculaGeneroController.insertar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listPeliculaGenero?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
+			<p:commandButton value="Volver"
+				action="panel?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+				
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+			
+			<div class="row">
+>>>>>>> caba977f91193b93e052403f581f0c5c9d7f568c
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 						<p:dataTable id="lstPeliculaGenero" var="pelGen"
@@ -49,7 +96,11 @@
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen géneros asignados a películas." rowIndexVar="item"
+<<<<<<< HEAD
 							style="margin-bottom:0; margin-top:20px">
+=======
+							style="margin-bottom:0">
+>>>>>>> caba977f91193b93e052403f581f0c5c9d7f568c
 
 							<p:column headerText="Película">
 								<h:outputText value="#{pelGen.pelicula.nPelicula}" />
@@ -67,6 +118,7 @@
 					</div>
 				</div>				
 			</div>
+<<<<<<< HEAD
 			</h:form>
 			
 		</ui:define>
@@ -74,4 +126,13 @@
 	</ui:composition>
 	
 </h:body>
+=======
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+>>>>>>> caba977f91193b93e052403f581f0c5c9d7f568c
 </html>

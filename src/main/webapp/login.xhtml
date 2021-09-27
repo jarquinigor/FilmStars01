@@ -1,0 +1,93 @@
+<html lang="es" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta charset="utf-8" />
+	<title><ui:insert name="title">Inicio de Sesión</ui:insert></title>
+	<meta name="generator" content="Bootply" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<link href='https://fonts.googleapis.com/css?family=Be Vietnam'
+		rel='stylesheet' />
+
+	<style>
+@import url('https://fonts.googleapis.com/css?family=Be Vietnam');
+
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+body {
+	display: flex;
+	font-size: 30px;
+}
+
+form {
+	margin: auto;
+}
+
+.ui-button-success {
+	background-color: rgb(50, 205, 50) !important;
+}
+
+.ui-panel .ui-panel-title {
+	margin: 0 auto !important;
+}
+.ingresar{
+	color: white !important;
+	background-color:rgba(63, 223, 37, 1) !important;
+	border-radius: 8px !important;
+	border-style: solid !important;
+	border-color: rgba(114, 114, 114, 1) !important;
+	text-decoration: none !important;
+	padding:8px!important;
+}
+.ingresar:hover{
+	background-color: rgba(68, 68, 68, 1) !important;
+}
+</style>
+</h:head>
+
+<h:body style="background-color:rgba(34, 34, 34, 1)">
+
+	<p:growl id="mensajes" showDetail="true" life="2000" />
+
+	<h:form class="container align-middle" style="width:600px;">
+		<p:panel header="Inicio de Sesión"
+			style="text-align:center; background-color:rgba(34, 34, 34, 1); 
+			font-family: 'Be Vietnam';">
+			<p:graphicImage value="/resources/img/filmstars.png" width="80%"
+				style="margin: -164px 0px -164px 0px">
+			</p:graphicImage>
+			<h:panelGrid columns="2" cellpadding="5" align="middle"
+				style="margin:0 auto">
+				<h:outputLabel for="username" value="Email:"
+					style="color:white; font-size:20px;" />
+				<p:inputText value="#{usuarioController.usuario.nombreEmail}"
+					id="username" required="true" label="username" var="email" />
+				<h:outputLabel for="password" value="Contraseña:"
+					style="color:white;font-size:20px;" />
+				<p:password value="#{usuarioController.usuario.nombrePassword}"
+					id="password" required="true" var="password" label="password" />
+				<f:facet class="container text-center" name="footer">
+					<div align="middle" style="margin:20px 0px 0px 0px;">
+						<h:commandLink
+							style="font-size:25px; font-family: 'Be Vietnam';" 
+							styleClass="ingresar"
+							action="#{usuarioController.antiguoUsuario()}" value="Ingresar">
+						</h:commandLink>
+					</div>
+				</f:facet>
+			</h:panelGrid>
+		</p:panel>
+	</h:form>
+
+</h:body>
+
+</html>
