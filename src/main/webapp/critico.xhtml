@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="masterAdmin.xhtml">
+
+	<ui:define name="title">
+        Registro de críticos
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>CRÍTICO</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="cCritico" value="ID del crítico" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="cCritico"
+				styleClass="form-control" value="#{criticoController.critico.cCritico}"
+				required="true" />
+		</h:form>
+		<br />
+		<h:form>
+			<h:outputLabel for="nCritico" value="Nombre del crítico"
+				styleClass="control-label" />
+			<p:inputText autocomplete="off" id="nCritico"
+				styleClass="form-control"
+				value="#{criticoController.critico.nCritico}" maxlength="40"
+				required="true" />
+		</h:form>
+		<br />
+		<h:form>
+			<p:commandButton value="Registrar"
+				actionListener="#{criticoController.insertar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listCritico?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
+			<p:commandButton value="Volver"
+				action="panel?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+				
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+		<br />
+		<br />
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstCritico" var="cri"
+							value="#{criticoController.listaCriticos}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No hay ningún crítico registrado actualmente." rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="ID" sortBy="#{cri.cCritico}">
+								<h:outputText value="#{cri.cCritico}" />
+							</p:column>
+
+							<p:column headerText="Nombre" sortBy="#{cri.nCritico}">
+								<h:outputText value="#{cri.nCritico}" />
+							</p:column>
+							
+							<p:column headerText="Operación" exportable="false">
+								<h:commandLink action="critico" value="Eliminar"
+									actionListener="#{criticoController.eliminar(cri)}" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+				</div>				
+			</div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

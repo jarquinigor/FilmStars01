@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="masterAdmin.xhtml">
+
+	<ui:define name="title">
+        Registro de texto del crítico
+    </ui:define>
+
+	<ui:define name="titleCont">
+		<span>TEXTO CRÍTICA</span>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h:outputLabel for="cTextoCritica" value="ID de la crítica" styleClass="control-label" />
+			<p:inputText autocomplete="off" id="cTextoCritica"
+				styleClass="form-control" value="#{textoCriticaController.textoCritica.cTextoCritica}"
+				required="true" />
+		<br />
+		<br />
+			<h:outputLabel for="tCritica" value="Texto"
+				styleClass="control-label" />							
+			<p:inputText autocomplete="off" id="tCritica"
+				styleClass="form-control"
+				value="#{textoCriticaController.textoCritica.tCritica}" maxlength="45"
+				required="true" />
+		<br />
+		<br />
+			<p:outputLabel for="cboCritico" value="Crítico"/>
+			<p:selectOneMenu id="cboCritico" value="#{textoCriticaController.textoCritica.critico}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{textoCriticaController.listaCriticos}" var = "d" 
+					itemLabel="#{d.nCritico}" itemValue="#{d}"/>
+			</p:selectOneMenu>
+			<br />
+		<br />
+		<br />
+			<p:outputLabel for="cboPelicula" value="Película"/>
+			<p:selectOneMenu id="cboPelicula" value="#{textoCriticaController.textoCritica.pelicula}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{textoCriticaController.listaPeliculas}" var = "d" 
+					itemLabel="#{d.nPelicula}" itemValue="#{d}"/>
+			</p:selectOneMenu>
+			<br />
+		<br />
+		<br />
+			<p:commandButton value="Registrar"
+				actionListener="#{textoCriticaController.insertar()}"
+				styleClass="btn btn-primary " update="@form"
+				action="listTextoCritica?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
+			<p:commandButton value="Volver"
+				action="panel?faces-redirect=true" immediate="true"
+				styleClass="btn btn-default" ajax="false" />
+				
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group table-responsive box-table-class">
+						<p:dataTable id="lstTextoCritica" var="tex"
+							value="#{textoCriticaController.listaTextoCriticas}" paginator="true"
+							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
+							rows="10" styleClass="table table-bordered"
+							emptyMessage="No existen críticas por parte los críticos registradas." rowIndexVar="item"
+							style="margin-bottom:0">
+
+							<p:column headerText="ID" sortBy="#{tex.cTextoCritica}">
+								<h:outputText value="#{tex.cTextoCritica}" />
+							</p:column>
+							
+							<p:column headerText="Crítico">
+								<h:outputText value="#{tex.critico.nCritico}" />
+							</p:column>
+							
+							<p:column headerText="Película">
+								<h:outputText value="#{tex.pelicula.nPelicula}" />
+							</p:column>
+							
+							<p:column headerText="Texto" sortBy="#{tex.tCritica}">
+								<h:outputText value="#{tex.tCritica}" />
+							</p:column>
+							
+							<p:column headerText="Operación" exportable="false">	<!-- TODA REQUEST LLEGA AL CONTROLADOR -->
+								<h:commandLink action="listCritica" value="Eliminar"
+									actionListener="#{textoCriticaController.eliminar(tex)}" />
+							</p:column>
+						</p:dataTable>
+					</div>
+				</div>				
+			</div>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footerCont">
+
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
 	<display-name>FilmStars01</display-name>
 	<welcome-file-list>
 		<welcome-file>panel.xhtml</welcome-file>
 	</welcome-file-list>
+
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+	<context-param>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Production</param-value>
+	</context-param>
+
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -11,6 +22,43 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>
-		<url-pattern>*.xhtml</url-pattern>
+	
+		<url-pattern>/faces/*</url-pattern>
+        <url-pattern>/javax.faces.resource/*</url-pattern>
 	</servlet-mapping>
+
+
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>start</param-value>
+	</context-param>
+
+	<welcome-file-list>
+		<welcome-file>panel.xhtml</welcome-file>
+	</welcome-file-list>
+	
+	<mime-mapping>
+      <extension>ttf</extension>
+      <mime-type>css/fonts</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>otf</extension>
+      <mime-type>font/opentype</mime-type>
+    </mime-mapping>
+    <mime-mapping>
+      <extension>woff2</extension>
+      <mime-type>font/woff2</mime-type>
+    </mime-mapping>  
+    <mime-mapping>
+      <extension>woff</extension>
+      <mime-type>font/woff</mime-type>
+    </mime-mapping>  
+    <mime-mapping>
+      <extension>eot</extension>
+      <mime-type>application/vnd.ms-fontobject</mime-type>
+    </mime-mapping>
+    
+    <session-config>
+    <session-timeout>30</session-timeout>
+  </session-config>
 </web-app>
