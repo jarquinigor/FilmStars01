@@ -2,6 +2,8 @@ package pe.edu.upc.entity;
 
 import java.io.Serializable;
 
+//import javax.enterprise.context.SessionScoped;//
+//import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +13,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Usuario")
+//@Named
+//@SessionScoped
 public class Usuario implements Serializable {
-
+	
 private static final long serialVersionUID = 1L;
 	
 	@Id

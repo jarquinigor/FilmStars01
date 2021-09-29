@@ -1,81 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-<<<<<<< HEAD
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-
-<h:head></h:head>
-<h:body>
-
-	<ui:composition template="/WEB-INF/templates/masterAdmin.xhtml">
-		
-		<ui:define name="content">
-			
-			<h:form style="color:#FFFFFF; margin-top:6px; font-family:monospace">
-				<h:outputLabel for="cDirector" value="ID del director" styleClass="control-label" style="margin-right:10px"/>
-				<p:inputText autocomplete="off" id="cDirector"
-					styleClass="form-control" value="#{directorController.director.cDirector}"
-					required="true" />
-				<br />
-				<br />
-				<h:outputLabel for="nDirector" value="Nombre del director"
-					styleClass="control-label" style="margin-right:10px" />
-				<p:inputText autocomplete="off" id="nDirector"
-					styleClass="form-control"
-					value="#{directorController.director.nDirector}" maxlength="40"
-					required="true" />
-				<br />
-				<br />
-				<p:commandButton value="Registrar"
-					actionListener="#{directorController.insertar()}"
-					styleClass="btn btn-primary " update="@form"
-					action="director?faces-redirect=true" />
-				<p:commandButton value="Volver"
-					action="panel?faces-redirect=true" immediate="true"
-					styleClass="btn btn-default" ajax="false" />
-				
-				<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
-				<br />
-			</h:form>
-			
-			<h:form>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="form-group table-responsive box-table-class">
-							<p:dataTable id="lstDirector" var="dir"
-								value="#{directorController.listaDirectores}" paginator="true"
-								paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
-								rows="10" styleClass="table table-bordered"
-								emptyMessage="No hay ningún director registrado actualmente." rowIndexVar="item"
-								style="margin-bottom:0; margin-top:20px">
-
-								<p:column headerText="ID" sortBy="#{dir.cDirector}">
-									<h:outputText value="#{dir.cDirector}" />
-								</p:column>
-
-								<p:column headerText="Nombre" sortBy="#{dir.nDirector}">
-									<h:outputText value="#{dir.nDirector}" />
-								</p:column>
-							
-								<p:column headerText="Operación" exportable="false">
-									<h:commandLink action="listDirector" value="Eliminar"
-										actionListener="#{directorController.eliminar(dir)}" />
-								</p:column>
-
-							</p:dataTable>
-						</div>
-					</div>				
-				</div>
-			</h:form>
-			
-		</ui:define>
-		
-	</ui:composition>
-	
-</h:body>
-=======
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
@@ -152,5 +76,4 @@
 
 	</ui:define>
 </ui:composition>
->>>>>>> caba977f91193b93e052403f581f0c5c9d7f568c
 </html>

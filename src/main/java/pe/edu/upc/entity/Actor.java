@@ -17,34 +17,63 @@ public class Actor implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int cActor;
 	
-	@Column(name="nombreActor", nullable=false, length=50)
-	private String nombreActor;
+	@Column(name="nActor", nullable=false, length=60)
+	private String nActor;
 
 	public Actor() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
-	public Actor(int id, String nombreActor) {
+	public Actor(int cActor, String nActor) {
 		super();
-		this.id = id;
-		this.nombreActor = nombreActor;
+		this.cActor = cActor;
+		this.nActor = nActor;
+	}
+	
+	public int getcActor() {
+		return cActor;
 	}
 
-	public int getId() {
-		return id;
+	public void setcActor(int cActor) {
+		this.cActor = cActor;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public String getnActor() {
+		return nActor;
 	}
 
-	public String getNombreActor() {
-		return nombreActor;
+	public void setnActor(String nActor) {
+		this.nActor = nActor;
 	}
 
-	public void setNombreActor(String nombreActor) {
-		this.nombreActor = nombreActor;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + cActor;
+		result = prime * result + ((nActor == null) ? 0 : nActor.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Actor other = (Actor) obj;
+		if (cActor != other.cActor)
+			return false;
+		if (nActor == null) {
+			if (other.nActor != null)
+				return false;
+		} else if (!nActor.equals(other.nActor))
+			return false;
+		return true;
 	}
 }

@@ -1,72 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-<<<<<<< HEAD
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://primefaces.org/ui">
-
-<h:body>
-
-	<ui:composition template="/WEB-INF/templates/masterAdmin.xhtml">
-		
-		<ui:define name="content">
-			
-			<h:form style="color:#FFFFFF; margin-top:6px; font-family:monospace">
-				<h:outputLabel for="cCritico" value="ID del crítico" styleClass="control-label" style="margin-right:10px" />
-				<p:inputText autocomplete="off" id="cCritico"
-					styleClass="form-control" value="#{criticoController.critico.cCritico}"
-					required="true" />
-			</h:form>
-			<br />
-			<h:form style="color:#FFFFFF; margin-top:6px; font-family:monospace">
-				<h:outputLabel for="nCritico" value="Nombre del crítico"
-					styleClass="control-label" style="margin-right:10px" />
-				<p:inputText autocomplete="off" id="nCritico"
-					styleClass="form-control"
-					value="#{criticoController.critico.nCritico}" maxlength="40"
-					required="true" />
-			</h:form>
-			<br />
-			<h:form>
-				<p:commandButton value="Registrar"
-					actionListener="#{criticoController.insertar()}"
-					styleClass="btn btn-primary " update="@form"
-					action="critico?faces-redirect=true" />
-				<p:commandButton value="Volver"
-					action="panel?faces-redirect=true" immediate="true"
-					styleClass="btn btn-default" ajax="false" />
-				
-				<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
-				<br />
-			</h:form>
-			
-			<h:form>
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="form-group table-responsive box-table-class">
-							<p:dataTable id="lstCritico" var="cri"
-								value="#{criticoController.listaCriticos}" paginator="true"
-								paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
-								rows="10" styleClass="table table-bordered"
-								emptyMessage="No hay ningún crítico registrado actualmente." rowIndexVar="item"
-								style="margin-bottom:0; margin-top:20px">
-
-								<p:column headerText="ID" sortBy="#{cri.cCritico}">
-									<h:outputText value="#{cri.cCritico}" />
-								</p:column>
-
-								<p:column headerText="Nombre" sortBy="#{cri.nCritico}">
-									<h:outputText value="#{cri.nCritico}" />
-								</p:column>
-							
-								<p:column headerText="Operación" exportable="false">
-									<h:commandLink action="critico" value="Eliminar"
-										actionListener="#{criticoController.eliminar(cri)}" />
-								</p:column>
-
-							</p:dataTable>
-=======
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
@@ -135,24 +68,14 @@
 							</p:column>
 
 						</p:dataTable>
->>>>>>> caba977f91193b93e052403f581f0c5c9d7f568c
 					</div>
 				</div>				
 			</div>
 		</h:form>
-<<<<<<< HEAD
-			
-		</ui:define>
-		
-	</ui:composition>
-	
-</h:body>
-=======
 	</ui:define>
 
 	<ui:define name="footerCont">
 
 	</ui:define>
 </ui:composition>
->>>>>>> caba977f91193b93e052403f581f0c5c9d7f568c
 </html>

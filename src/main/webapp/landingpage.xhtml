@@ -6,13 +6,8 @@
 
 <ui:composition template="masterUsuario.xhtml">
 	<ui:define name="content">
-	
-	<p:inputText styleClass="form-control"
-				value="#{sesion.miusuario}"
-				/>
-				
 		<div style="text-align: center; margin: 1%">
-			<p:link href="#">
+			<p:link href="peliculasUsuario.xhtml">
 				<p:graphicImage value="/resources/img/peliculas.png"
 					style="width:100%;"></p:graphicImage>
 			</p:link>
@@ -24,11 +19,13 @@
 			</p:link>
 		</div>
 		<div style="text-align: center; margin: 1%">
-			<p:link href="noticiaUsuario.xhtml">
+			<p:link href="noticiasUsuario.xhtml">
 				<p:graphicImage value="/resources/img/noticias.png"
 					style="width:100%;"></p:graphicImage>
 			</p:link>
 		</div>
+		
+	
 	</ui:define>
 </ui:composition>
 </html>

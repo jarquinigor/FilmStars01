@@ -48,7 +48,7 @@ body {
 	<div class="container base_fondo_222222">
 		<nav class="navbar navbar-expand-lg navbar-dark"
 			style="margin-bottom: 0px; margin-top: 10px;">
-			<a class="navbar-brand"
+			<a class="navbar-brand" href="landingpage.xhtml"
 				style="display: table; margin: 7px; padding-top: 5px; padding-bottom: 5px;">
 				<img src="resources/img/filmstars.png" alt="" height="60" />
 			</a>
@@ -69,14 +69,14 @@ body {
 
 				<ul class="navbar-nav ml-auto w-auto justify-content-end"
 					style="font-size: 0.92rem;">
-					<li class="nav-item"><a class="nav-link" href="#"
-						style="color: white;">INICIO</a></li>
-					<li class="nav-item"><a class="nav-link" href="#"
+					<li class="nav-item"><a class="nav-link"
+						href="landingpage.xhtml" style="color: white;">INICIO</a></li>
+					<li class="nav-item"><a class="nav-link" href="peliculasUsuario.xhtml"
 						style="color: white;">PELÍCULAS</a></li>
 					<li class="nav-item"><a class="nav-link" href="#"
 						style="color: white;">FILMSPACE</a></li>
 					<li class="nav-item"><a class="nav-link"
-						href="noticiaUsuario.xhtml" style="color: white;">NOTICIAS</a></li>
+						href="noticiasUsuario.xhtml" style="color: white;">NOTICIAS</a></li>
 				</ul>
 
 			</div>
@@ -86,6 +86,19 @@ body {
 		<ui:insert name="content">
 		</ui:insert>
 	</div>
-	<ui:insert name="footerCont"></ui:insert>
+	<ui:insert name="footerCont">
+		<h:outputText style="color:white;"
+			value="#{usuarioController.lService.usuario.cUsuario}" />
+		<br></br>
+		<h:outputText style="color:white;"
+			value="#{usuarioController.lService.usuario.nombrePassword}" />
+		<br></br>
+		<h:outputText style="color:white;"
+			value="#{usuarioController.lService.usuario.nombreUsuario}" />
+		<br></br>
+		<h:outputText style="color:white;"
+			value="#{usuarioController.lService.usuario.nombreEmail}" />
+		<br></br>
+	</ui:insert>
 </h:body>
 </html>

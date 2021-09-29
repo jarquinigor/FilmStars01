@@ -44,22 +44,33 @@ public class UsuarioDaoImpl implements IUsuarioDao, Serializable{
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean verificaUsuario(String email, String password) {
-		List<Usuario> usuarios = new ArrayList<Usuario>();
+		/*List<Usuario> usuarios = new ArrayList<Usuario>();
 		Query q = em.createQuery("select u from Usuario u where u.nombreEmail like ?1 and u.nombrePassword like ?2");
 		q.setParameter(1,"%" + email +"%");
 		q.setParameter(2, "%" + password +"%");
 		
 		usuarios = (List<Usuario>)q.getResultList();
+		return usuarios.isEmpty();*/
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		Query q = em.createQuery("select u from Usuario u where u.nombreEmail = :uemail and u.nombrePassword = :upassword");
+		q.setParameter("uemail",email);
+		q.setParameter("upassword",password);
+		
+		usuarios = (List<Usuario>)q.getResultList();
 		return usuarios.isEmpty();
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Usuario enviarUsuario(String email, String password) {
+		List<Usuario> usuarios = new ArrayList<Usuario>();
 		Usuario usuario = new Usuario();
-		Query q = em.createQuery("select u from Usuario u where u.nEmail=:email and u.nPassword=:password");
-		q.setParameter("email",email);
-		q.setParameter("password", password);
-		usuario = (Usuario)q.getSingleResult();
+		Query q = em.createQuery("select u from Usuario u where u.nombreEmail = :uemail and u.nombrePassword = :upassword");
+		q.setParameter("uemail",email);
+		q.setParameter("upassword",password);
+		
+		usuarios = (List<Usuario>)q.getResultList();
+		usuario = usuarios.get(0);
 		return usuario;
 	}
 }
