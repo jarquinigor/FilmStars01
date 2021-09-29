@@ -86,21 +86,12 @@ public class TextoCriticaController implements Serializable{
 		this.listarTextoCritica();
 	}
 	
-	public void findByPelicula() {
-		if (textoCritica.getPelicula().getnPelicula().isEmpty()) {
+	public void findByTexto() {
+		if (textoCritica.gettCritica().isEmpty()) {
 			this.listarTextoCritica();
 		}
 		else {
-			listaTextoCriticas = this.tcService.findByPelicula(this.getTextoCritica());
-		}
-	}
-	
-	public void findByCritico() {
-		if (textoCritica.getCritico().getnCritico().isEmpty()) {
-			this.listarTextoCritica();
-		}
-		else {
-			listaTextoCriticas = this.tcService.findByCritico(this.getTextoCritica());
+			listaTextoCriticas = this.tcService.findByTextoTextoCritica(this.getTextoCritica());
 		}
 	}
 

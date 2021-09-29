@@ -24,6 +24,11 @@ public class ActorServiceImpl implements IActorService, Serializable{
 	public void insertar(Actor actor) {
 		mD.insertar(actor);	
 	}
+	
+	@Override
+	public void update(Actor actor) {
+		mD.update(actor);
+	}
 
 	@Override
 	public List<Actor> listar() {

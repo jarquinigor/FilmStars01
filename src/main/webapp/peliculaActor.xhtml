@@ -17,67 +17,74 @@
 
 	<ui:define name="content">
 		<h:form>
-			<p:outputLabel for="cboPelicula" value="Película: "/>
-			<p:selectOneMenu id="cboPelicula" value="#{peliculaActorController.peliculaActor.pelicula}"
+			<p:outputLabel for="cboPelicula" value="Película: " />
+			<p:selectOneMenu id="cboPelicula"
+				value="#{peliculaActorController.peliculaActor.pelicula}"
 				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{peliculaActorController.listaPeliculas}" var = "d" 
-					itemLabel="#{d.nPelicula}" itemValue="#{d}"/>
+				<f:selectItems value="#{peliculaActorController.listaPeliculas}"
+					var="d" itemLabel="#{d.nPelicula}" itemValue="#{d}" />
 			</p:selectOneMenu>
-		<br />
-		<br />
-			<h:outputLabel for="nPersonaje" value="Nombre del personaje: " styleClass="control-label" />							
+			<br />
+			<br />
+			<h:outputLabel for="nPersonaje" value="Nombre del personaje: "
+				styleClass="control-label" />
 			<p:inputText autocomplete="off" id="nPersonaje"
-				styleClass="form-control" value="#{peliculaActorController.peliculaActor.nPersonaje}" maxlength="45"
-				required="true" />
-		<br />
-		<br />
-			<p:outputLabel for="cboActor" value="Actor: "/>
-			<p:selectOneMenu id="cboActor" value="#{peliculaActorController.peliculaActor.actor}"
+				styleClass="form-control"
+				value="#{peliculaActorController.peliculaActor.nPersonaje}"
+				maxlength="45" required="true" />
+			<br />
+			<br />
+			<p:outputLabel for="cboActor" value="Actor: " />
+			<p:selectOneMenu id="cboActor"
+				value="#{peliculaActorController.peliculaActor.actor}"
 				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{peliculaActorController.listaActores}" var = "d" 
-					itemLabel="#{d.nActor}" itemValue="#{d}"/>
+				<f:selectItems value="#{peliculaActorController.listaActores}"
+					var="d" itemLabel="#{d.nActor}" itemValue="#{d}" />
 			</p:selectOneMenu>
-		<br />
-		<br />
+			<br />
+			<br />
 			<p:commandButton value="Registrar"
 				actionListener="#{peliculaActorController.insertar()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listPeliculaActor?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
-			<p:commandButton value="Volver"
-				action="panel?faces-redirect=true" immediate="true"
-				styleClass="btn btn-default" ajax="false" />
-				
-			<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
-			
+				action="listPeliculaActor?faces-redirect=true" />
+			<!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
+			<p:commandButton value="Volver" action="panel?faces-redirect=true"
+				immediate="true" styleClass="btn btn-default" ajax="false" />
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+			<!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
 						<p:dataTable id="lstPeliculaActor" var="pelAct"
-							value="#{peliculaActorController.listaPeliculaActor}" paginator="true"
-							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
-							rows="10" styleClass="table table-bordered"
-							emptyMessage="No existen actores asignados a películas." rowIndexVar="item"
-							style="margin-bottom:0">
+							value="#{peliculaActorController.listaPeliculaActor}"
+							paginator="true" paginatorPosition="top"
+							rowsPerPageTemplate="10,20,30,40,50" rows="10"
+							styleClass="table table-bordered"
+							emptyMessage="No existen actores asignados a películas."
+							rowIndexVar="item" style="margin-bottom:0">
 
 							<p:column headerText="Película">
 								<h:outputText value="#{pelAct.pelicula.nPelicula}" />
 							</p:column>
-							
+
 							<p:column headerText="Personaje" sortBy="#{pelAct.nPersonaje}">
 								<h:outputText value="#{pelAct.nPersonaje}" />
 							</p:column>
-							
+
 							<p:column headerText="Actor">
 								<h:outputText value="#{pelAct.actor.nActor}" />
 							</p:column>
-							
-							<p:column headerText="Operación" exportable="false">	<!-- TODA REQUEST LLEGA AL CONTROLADOR -->
+
+							<p:column headerText="Operación" exportable="false">
+								<!-- TODA REQUEST LLEGA AL CONTROLADOR -->
 								<h:commandLink action="listPeliculaActor" value="Eliminar"
 									actionListener="#{peliculaActorController.eliminar(pelAct)}" />
 							</p:column>
 						</p:dataTable>
 					</div>
-				</div>				
+				</div>
 			</div>
 		</h:form>
 	</ui:define>

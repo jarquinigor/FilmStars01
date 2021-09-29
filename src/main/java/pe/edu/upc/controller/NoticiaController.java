@@ -24,19 +24,21 @@ public class NoticiaController implements Serializable {
 	private Noticia noticia;
 	List<Noticia> listaNoticias;
 	/////////
-	
+	static private Noticia noticiaUsuario;   //USAREMOS ESTE PARA VISUALIZAR
 	
 	@PostConstruct
 	public void init() {
 		this.listaNoticias = new ArrayList<Noticia>();
 		this.noticia = new Noticia();
-		this.listarNoticia();
+		this.listarNoticia(); //SE GUARDAN LOS DATOS DE NUEVO
 	}
 	
-	public String verNoticia2(Noticia noticia) {
-		this.setNoticia(noticia);
+	public String verNoticia(Noticia noticia) {
+		this.setNoticiaUsuario(noticia);
 		System.out.println(noticia.getcNoticia());
 		System.out.println(noticia.getnNoticiaTitulo());
+
+		
 		return "noticiaUsuario.xhtml";
 	}
 	
@@ -49,7 +51,7 @@ public class NoticiaController implements Serializable {
 		nService.insertar(noticia);
 		limpiarNoticia();
 	}
-
+	
 	public void listarNoticia() {
 		listaNoticias = nService.listar();
 	}
@@ -87,4 +89,14 @@ public class NoticiaController implements Serializable {
 	public void setListaNoticias(List<Noticia> listaNoticias) {
 		this.listaNoticias = listaNoticias;
 	}
+
+	////
+	public Noticia getNoticiaUsuario() {
+		return noticiaUsuario;
+	}
+
+	public void setNoticiaUsuario(Noticia noticiaUsuario) {
+		NoticiaController.noticiaUsuario = noticiaUsuario;
+	}
+	
 }

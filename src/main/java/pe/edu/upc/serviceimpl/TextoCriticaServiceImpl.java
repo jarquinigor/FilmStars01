@@ -36,13 +36,8 @@ public class TextoCriticaServiceImpl implements ITextoCriticaService, Serializab
 	}
 	
 	@Override
-	public List<TextoCritica> findByPelicula(TextoCritica tc) {
-		return mD.findByPelicula(tc);
-	}
-	
-	@Override
-	public List<TextoCritica> findByCritico(TextoCritica tc) {
-		return mD.findByCritico(tc);
+	public List<TextoCritica> findByTextoTextoCritica(TextoCritica tc) {
+		return mD.findByTextoTextoCritica(tc);
 	}
 	
 }

@@ -29,7 +29,7 @@ public class PeliculaActor implements Serializable {
 	@JoinColumn(name = "cActor", nullable = false)
 	private Actor actor;
 	
-	@Column(name="nombrePersonaje", nullable=false, length=60)
+	@Column(name="nombrePersonaje", nullable = false, length=60)
 	private String nPersonaje;
 
 	public PeliculaActor() {

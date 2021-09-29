@@ -15,12 +15,12 @@ import pe.edu.upc.service.IUsuarioService;
 import pe.edu.upc.serviceimpl.LoginService;
 
 @Named
-//@SessionScoped
 @RequestScoped
 public class UsuarioController implements Serializable{
 
 	private static final long serialVersionUID = -3351318371418292111L;
 
+	//Registro
 	@Inject
 	private IUsuarioService uService;
 	
@@ -30,17 +30,15 @@ public class UsuarioController implements Serializable{
 	private Usuario usuario;
 	List<Usuario> listaUsuarios;
 	
+	
+	//Login
 	private Usuario usuarioLogin;
 	
 	@PostConstruct
 	public void init() {
-		//if(aux==1 || aux==2) {
-			this.listaUsuarios = new ArrayList<Usuario>();//limpia a "listaUsuarios"
-			this.usuario = new Usuario(); //limpia a "usuario"
-			this.listarUsuario(); //Guarda los usuarios en la lista
-			//this.lService = new LoginService(); //ATENCIÓN CON ESTO
-			//aux=aux+1;
-		//}
+		this.listaUsuarios = new ArrayList<Usuario>();//limpia a "listaUsuarios"
+		this.usuario = new Usuario(); //limpia a "usuario"
+		this.listarUsuario(); //Guarda los usuarios en la lista
 	}
 	
 	public String nuevoUsuario() {
@@ -52,7 +50,15 @@ public class UsuarioController implements Serializable{
 		uService.insertar(usuario);
 		limpiarUsuario();
 	}
-
+	
+	public String registrar() {
+		uService.insertar(usuario);
+		lService.setUsuario(uService.enviarUsuario(usuario.getNombreEmail(), usuario.getNombrePassword()));
+		setUsuarioLogin(lService.getUsuario());
+		return "landingpage.xhtml";
+	}
+	
+	
 	public void listarUsuario() {
 		listaUsuarios = uService.listar();
 	}
@@ -83,14 +89,14 @@ public class UsuarioController implements Serializable{
 				lService.setUsuario(uService.enviarUsuario(usuario.getNombreEmail(), usuario.getNombrePassword()));
 				setUsuarioLogin(lService.getUsuario());
 				
-				System.out.println(uService.enviarUsuario(usuario.getNombreEmail(), usuario.getNombrePassword()).getcUsuario());
+				/*System.out.println(uService.enviarUsuario(usuario.getNombreEmail(), usuario.getNombrePassword()).getcUsuario());
 				System.out.println(uService.enviarUsuario(usuario.getNombreEmail(), usuario.getNombrePassword()).getNombreUsuario());
 				
 				System.out.println(lService.getUsuario().getcUsuario());
 				System.out.println(lService.getUsuario().getNombreUsuario());
 				
 				System.out.println(usuarioLogin.getcUsuario());
-				System.out.println(usuarioLogin.getNombreUsuario());
+				System.out.println(usuarioLogin.getNombreUsuario());*/
 				
 				return "landingpage.xhtml";
 			}			
@@ -113,6 +119,7 @@ public class UsuarioController implements Serializable{
 		this.listaUsuarios = listaUsuarios;
 	}
 
+	
 	public Usuario getUsuarioLogin() {
 		return usuarioLogin;
 	}

@@ -43,20 +43,10 @@ public class TextoCriticaDaoImpl implements ITextoCriticaDao, Serializable{
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<TextoCritica> findByPelicula(TextoCritica tc) {
+	public List<TextoCritica> findByTextoTextoCritica(TextoCritica tc) {
 		List<TextoCritica> lista = new ArrayList<TextoCritica>();
-		Query q = em.createQuery("select tc from TextoCritica tc where tc.pelicula.nPelicula");
-		q.setParameter(1, "%" + tc.getPelicula().getnPelicula() + "%");
-		lista = (List<TextoCritica>) q.getResultList();
-		return lista;
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<TextoCritica> findByCritico(TextoCritica tc) {
-		List<TextoCritica> lista = new ArrayList<TextoCritica>();
-		Query q = em.createQuery("select tc from TextoCritica tc where tc.critico.nCritico");
-		q.setParameter(1, "%" + tc.getCritico().getnCritico() + "%");
+		Query q = em.createQuery("select tc from TextoCritica tc where tc.tCritica like?1");
+		q.setParameter(1, "%" + tc.gettCritica() + "%");
 		lista = (List<TextoCritica>) q.getResultList();
 		return lista;
 	}

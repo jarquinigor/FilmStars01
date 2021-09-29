@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <style>
-p:column {  /* NO FUNCIONA ESTO */
+p:column { /* NO FUNCIONA ESTO */
 	color: red !important;
 }
 </style>
@@ -20,7 +20,8 @@ p:column {  /* NO FUNCIONA ESTO */
 					style="width:100%;"></p:graphicImage>
 			</p:link>
 		</div>
-		<h:form> <!-- IMPORTANTE EL FORM -->
+		<h:form>
+			<!-- IMPORTANTE EL FORM -->
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
@@ -60,19 +61,18 @@ p:column {  /* NO FUNCIONA ESTO */
 							varStatus="status">
 							<div class="col-sm-3 my-auto" style="color: white;">
 
-								
-								
-								<p:commandLink value="Detalle"
-									action="#{noticiaController.verNoticia2(noti)}"
+
+							
+								<p:commandLink action="#{noticiaController.verNoticia(noti)}"
 									styleClass="btn" ajax="false">
 
 									<h:graphicImage value="#{noti.tNoticiaImagen}" width="100%" />
-									<p style="color:white;">#{noti.nNoticiaTitulo}</p>
-									<p style="color:white;">#{noti.nNoticiaSubtitulo}</p>
+									<p style="color: white;">#{noti.nNoticiaTitulo}</p>
+									<p style="color: white;">#{noti.nNoticiaSubtitulo}</p>
 
 								</p:commandLink>
-								
-								
+
+
 							</div>
 						</ui:repeat>
 					</div>

@@ -40,4 +40,15 @@ public class NoticiaComentarioDaoImpl implements INoticiaComentarioDao, Serializ
 		noticiaComentario = em.getReference(NoticiaComentario.class, CNoticiaComentario);
 		em.remove(noticiaComentario);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<NoticiaComentario> filtroNoticiaComentario(int CNoticia){
+		List<NoticiaComentario> noticiaComentarios = new ArrayList<NoticiaComentario>();
+		Query q = em.createQuery("select nc from NoticiaComentario nc where nc.noticia.cNoticia = :cnot");
+		q.setParameter("cnot",CNoticia);
+		
+		noticiaComentarios = (List<NoticiaComentario>)q.getResultList();
+		return noticiaComentarios;	
+	}
 }

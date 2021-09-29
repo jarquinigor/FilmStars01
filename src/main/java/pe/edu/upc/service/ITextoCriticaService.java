@@ -8,6 +8,5 @@ public interface ITextoCriticaService {
 	public void insertar(TextoCritica textoCritica);
 	public List<TextoCritica> listar();
 	public void eliminar(int cTextoCritica);
-	public List<TextoCritica> findByPelicula(TextoCritica tc);
-	public List<TextoCritica> findByCritico(TextoCritica tc);
+	public List<TextoCritica> findByTextoTextoCritica(TextoCritica tc);
 }

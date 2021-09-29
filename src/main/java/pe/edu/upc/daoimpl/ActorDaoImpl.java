@@ -23,6 +23,12 @@ public class ActorDaoImpl implements IActorDao, Serializable{
 	public void insertar(Actor actor) {
 		em.persist(actor);
 	}
+	
+	@Transactional
+	@Override
+	public void update(Actor actor) {
+		em.merge(actor);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

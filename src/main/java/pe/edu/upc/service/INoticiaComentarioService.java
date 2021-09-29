@@ -8,4 +8,5 @@ public interface INoticiaComentarioService {
 	public void insertar(NoticiaComentario noticiaComentario);
 	public List<NoticiaComentario> listar();
 	public void eliminar(int cNoticiaComentario);
+	public List<NoticiaComentario> filtroNoticiaComentario(int CNoticia);
 }

@@ -19,7 +19,7 @@ public class Actor implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cActor;
 	
-	@Column(name="nActor", nullable=false, length=60)
+	@Column(name="nombreActor", nullable=false, length=60)
 	private String nActor;
 
 	public Actor() {
@@ -32,7 +32,7 @@ public class Actor implements Serializable {
 		this.cActor = cActor;
 		this.nActor = nActor;
 	}
-	
+
 	public int getcActor() {
 		return cActor;
 	}

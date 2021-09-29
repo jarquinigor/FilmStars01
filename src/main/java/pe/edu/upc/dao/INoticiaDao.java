@@ -8,5 +8,4 @@ public interface INoticiaDao {
 	public List<Noticia> listar();
 	public void eliminar(int CNoticia);
 	public List<Noticia> findByTituloNoticia(Noticia n);
-	//public Noticia enviarNoticia(String email, String password)
 }

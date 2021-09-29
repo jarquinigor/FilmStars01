@@ -22,10 +22,12 @@ p:column {
 		</div>
 
 		<div>
-			<p style="font-size: 35px; color: white;">#{noticiaController.noticia.nNoticiaTitulo}</p>
-			<p style="font-size: 20px; color: white;">#{noticiaController.noticia.nNoticiaSubtitulo}</p>
+			<p style="font-size: 35px; color: white;">#{noticiaController.noticiaUsuario.cNoticia}</p>
+			<p style="font-size: 35px; color: white;">#{noticiaController.noticiaUsuario.nNoticiaTitulo}</p>
+			<p style="font-size: 20px; color: white;">#{noticiaController.noticiaUsuario.nNoticiaSubtitulo}</p>
 			<div style="text-align: center; margin: 1%">
-				<p:graphicImage value="#{noticiaController.noticia.tNoticiaImagen}"
+				<p:graphicImage
+					value="#{noticiaController.noticiaUsuario.tNoticiaImagen}"
 					style="width:100%;"></p:graphicImage>
 			</div>
 			<p style="font-size: 20px; color: white;">#{noticiaController.noticia.tNoticia}</p>
@@ -36,18 +38,44 @@ p:column {
 
 		<div
 			style="padding: 20px; border-style: solid; border-width: 1px; border-radius: 5px; border-color: rgba(114, 114, 114, 1)">
-			<form id="algin-form">
+			<h:form>
 				<div class="form-group">
-					<textarea name="msg" id="msg" cols="30" rows="5"
+					<h:inputTextarea name="msg" id="msg" cols="30" rows="5"
+						value="#{noticiaComentarioController.noticiaComentario.tNoticiaComentario}"
 						placeholder="Añade un comentario" class="form-control"
-						style="background-color: rgba(0, 0, 0, 0.15); border-color: rgba(114, 114, 114, 1); color: white;"></textarea>
+						style="background-color: rgba(0, 0, 0, 0.15); border-color: rgba(114, 114, 114, 1); color: white;" />
+
 				</div>
 
-			</form>
+				<div class="form-group box-main-btn" style="margin-bottom: 0px;">
+					<p:commandButton value="Comentar"
+						style="background-color: rgba(0, 0, 0, 0.15); border-color: rgba(114, 114, 114, 1); color: white;"
+						actionListener="#{noticiaComentarioController.insertar(noticiaController.noticiaUsuario)}"
+						styleClass="btn btn-primary ajax=true" />
+				</div>
 
-			<button type="button" id="post" class="btn"
-				style="background-color: rgba(0, 0, 0, 0.15); border-color: rgba(114, 114, 114, 1); color: white;">Comentar</button>
+			</h:form>
 		</div>
+
+
+		<br></br>
+		<div
+			style="padding: 20px; border-style: solid; border-width: 1px; border-radius: 5px; border-color: rgba(114, 114, 114, 1)">
+
+			<h:form>
+				<ui:repeat var="nc"
+					value="#{noticiaComentarioController.verNoticiaComentarios(noticiaController.noticiaUsuario)}"
+					varStatus="status">
+					<div class="col-sm-3 my-auto" style="color: white;">
+						<p style="color: white;">#{nc.usuario.nombreUsuario}</p>
+						<p style="color: white;">#{nc.tNoticiaComentario}</p>
+
+					</div>
+				</ui:repeat>
+			</h:form>
+		</div>
+
+
 
 	</ui:define>
 </ui:composition>
