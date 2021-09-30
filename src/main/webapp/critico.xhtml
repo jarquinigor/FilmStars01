@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="master.xhtml">
+<ui:composition template="masterAdmin.xhtml">
 
 	<ui:define name="title">
         Registro de críticos
@@ -21,22 +21,19 @@
 			<p:inputText autocomplete="off" id="cCritico"
 				styleClass="form-control" value="#{criticoController.critico.cCritico}"
 				required="true" />
-		</h:form>
 		<br />
-		<h:form>
 			<h:outputLabel for="nCritico" value="Nombre del crítico"
 				styleClass="control-label" />
 			<p:inputText autocomplete="off" id="nCritico"
 				styleClass="form-control"
 				value="#{criticoController.critico.nCritico}" maxlength="40"
 				required="true" />
-		</h:form>
 		<br />
-		<h:form>
+		
 			<p:commandButton value="Registrar"
 				actionListener="#{criticoController.insertar()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listCritico?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
+				action="critico?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
 			<p:commandButton value="Volver"
 				action="panel?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
@@ -44,6 +41,9 @@
 			<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
 		<br />
 		<br />
+		</h:form>
+		
+		<h:form>
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">

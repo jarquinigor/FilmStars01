@@ -2,6 +2,8 @@ package pe.edu.upc.entity;
 
 import java.io.Serializable;
 
+//import javax.enterprise.context.SessionScoped;//
+//import javax.inject.Named;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +13,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="Usuario")
+//@Named
+//@SessionScoped
 public class Usuario implements Serializable {
-
+	
 private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -20,25 +24,25 @@ private static final long serialVersionUID = 1L;
 	private int cUsuario;
 	
 	@Column(name="nombreUsuario", nullable=false, length=60)
-	private String nUsuario;
+	private String nombreUsuario;
 	
 	@Column(name="nombreEmail", nullable=false, length=60)
-	private String nEmail;
+	private String nombreEmail;
 	
 	@Column(name="nombrePassword", nullable=false, length=30)
-	private String nPassword;
+	private String nombrePassword;
 
 	public Usuario() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Usuario(int cUsuario, String nUsuario, String nEmail, String nPassword) {
+	public Usuario(int cUsuario, String nombreUsuario, String nombreEmail, String nombrePassword) {
 		super();
 		this.cUsuario = cUsuario;
-		this.nUsuario = nUsuario;
-		this.nEmail = nEmail;
-		this.nPassword = nPassword;
+		this.nombreUsuario = nombreUsuario;
+		this.nombreEmail = nombreEmail;
+		this.nombrePassword = nombrePassword;
 	}
 
 	public int getcUsuario() {
@@ -49,28 +53,28 @@ private static final long serialVersionUID = 1L;
 		this.cUsuario = cUsuario;
 	}
 
-	public String getnUsuario() {
-		return nUsuario;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setnUsuario(String nUsuario) {
-		this.nUsuario = nUsuario;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
-	public String getnEmail() {
-		return nEmail;
+	public String getNombreEmail() {
+		return nombreEmail;
 	}
 
-	public void setnEmail(String nEmail) {
-		this.nEmail = nEmail;
+	public void setNombreEmail(String nombreEmail) {
+		this.nombreEmail = nombreEmail;
 	}
 
-	public String getnPassword() {
-		return nPassword;
+	public String getNombrePassword() {
+		return nombrePassword;
 	}
 
-	public void setnPassword(String nPassword) {
-		this.nPassword = nPassword;
+	public void setNombrePassword(String nombrePassword) {
+		this.nombrePassword = nombrePassword;
 	}
 
 	@Override
@@ -78,9 +82,9 @@ private static final long serialVersionUID = 1L;
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + cUsuario;
-		result = prime * result + ((nEmail == null) ? 0 : nEmail.hashCode());
-		result = prime * result + ((nPassword == null) ? 0 : nPassword.hashCode());
-		result = prime * result + ((nUsuario == null) ? 0 : nUsuario.hashCode());
+		result = prime * result + ((nombreEmail == null) ? 0 : nombreEmail.hashCode());
+		result = prime * result + ((nombrePassword == null) ? 0 : nombrePassword.hashCode());
+		result = prime * result + ((nombreUsuario == null) ? 0 : nombreUsuario.hashCode());
 		return result;
 	}
 
@@ -95,20 +99,20 @@ private static final long serialVersionUID = 1L;
 		Usuario other = (Usuario) obj;
 		if (cUsuario != other.cUsuario)
 			return false;
-		if (nEmail == null) {
-			if (other.nEmail != null)
+		if (nombreEmail == null) {
+			if (other.nombreEmail != null)
 				return false;
-		} else if (!nEmail.equals(other.nEmail))
+		} else if (!nombreEmail.equals(other.nombreEmail))
 			return false;
-		if (nPassword == null) {
-			if (other.nPassword != null)
+		if (nombrePassword == null) {
+			if (other.nombrePassword != null)
 				return false;
-		} else if (!nPassword.equals(other.nPassword))
+		} else if (!nombrePassword.equals(other.nombrePassword))
 			return false;
-		if (nUsuario == null) {
-			if (other.nUsuario != null)
+		if (nombreUsuario == null) {
+			if (other.nombreUsuario != null)
 				return false;
-		} else if (!nUsuario.equals(other.nUsuario))
+		} else if (!nombreUsuario.equals(other.nombreUsuario))
 			return false;
 		return true;
 	}

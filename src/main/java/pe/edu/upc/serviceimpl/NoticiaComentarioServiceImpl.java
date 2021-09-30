@@ -34,4 +34,9 @@ public class NoticiaComentarioServiceImpl implements INoticiaComentarioService, 
 	public void eliminar(int CNoticiaComentario) {
 		mD.eliminar(CNoticiaComentario);
 	}
+	
+	@Override
+	public List<NoticiaComentario> filtroNoticiaComentario(int CNoticia){
+		return mD.filtroNoticiaComentario(CNoticia);
+	}
 }

@@ -34,4 +34,14 @@ public class UsuarioServiceImpl implements IUsuarioService, Serializable{
 	public void eliminar(int CUsuario) {
 		mD.eliminar(CUsuario);
 	}
+	
+	@Override
+	public boolean verificaUsuario(String email, String password) {
+		return mD.verificaUsuario(email, password);
+	}
+	
+	@Override
+	public Usuario enviarUsuario(String email, String password) {
+		return mD.enviarUsuario(email, password);
+	}
 }

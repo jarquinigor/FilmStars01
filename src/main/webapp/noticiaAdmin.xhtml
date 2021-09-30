@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="master.xhtml">
+<ui:composition template="masterAdmin.xhtml">
 
 	<ui:define name="title">
         Registro de noticias
@@ -50,15 +50,14 @@
 			<p:commandButton value="Registrar"
 				actionListener="#{noticiaController.insertar()}"
 				styleClass="btn btn-primary " update="@form"
-				action="noticia?faces-redirect=true" />
+				action="listNoticia?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
 			<p:commandButton value="Volver"
 				action="panel?faces-redirect=true" immediate="true"
 				styleClass="btn btn-default" ajax="false" />
 				
 			<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
 		<br />
-		</h:form>
-		<h:form>
+		<br />
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
@@ -86,7 +85,8 @@
 							</p:column>
 							
 							<p:column headerText="Imagen" sortBy="#{noti.tNoticiaImagen}">
-								<h:outputText value="#{noti.tNoticiaImagen}" />
+								<h:graphicImage value="#{noti.tNoticiaImagen}" height="50px"
+									width="50px"/>
 							</p:column>
 							
 							<p:column headerText="Operación" exportable="false">

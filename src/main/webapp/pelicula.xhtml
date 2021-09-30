@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-<ui:composition template="master.xhtml">
+<ui:composition template="masterAdmin.xhtml">
 
 	<ui:define name="title">
         Registro de película
@@ -17,63 +17,79 @@
 
 	<ui:define name="content">
 		<h:form>
-			<h:outputLabel for="cPelicula" value="ID de la película: " styleClass="control-label"/>
+			<h:outputLabel for="cPelicula" value="ID de la película: "
+				styleClass="control-label" />
 			<p:inputText autocomplete="off" id="cPelicula"
-				styleClass="form-control" value="#{peliculaController.pelicula.cPelicula}"
-				required="true" />
-		<br />
-		<br />
-			<h:outputLabel for="nPelicula" value="Nombre de la película: " styleClass="control-label" />							
+				styleClass="form-control"
+				value="#{peliculaController.pelicula.cPelicula}" required="true" />
+			<br />
+			<br />
+			<h:outputLabel for="nPelicula" value="Nombre de la película: "
+				styleClass="control-label" />
 			<p:inputText autocomplete="off" id="nPelicula"
-				styleClass="form-control" value="#{peliculaController.pelicula.nPelicula}" maxlength="45"
+				styleClass="form-control"
+				value="#{peliculaController.pelicula.nPelicula}" maxlength="45"
 				required="true" />
-		<br />
-		<br />
-			<h:outputLabel for="tPeliculaSinopsis" value="Sinopsis: " styleClass="control-label" />							
+			<br />
+			<br />
+			<h:outputLabel for="tPeliculaSinopsis" value="Sinopsis: "
+				styleClass="control-label" />
 			<p:inputText autocomplete="off" id="tPeliculaSinopsis"
-				styleClass="form-control" value="#{peliculaController.pelicula.tPeliculaSinopsis}" maxlength="45"
-				required="true" />
-		<br />
-		<br />
-			<h:outputLabel for="tPeliculaArgumento" value="Argumento: " styleClass="control-label" />							
+				styleClass="form-control"
+				value="#{peliculaController.pelicula.tPeliculaSinopsis}"
+				maxlength="45" required="true" />
+			<br />
+			<br />
+			<h:outputLabel for="tPeliculaArgumento" value="Argumento: "
+				styleClass="control-label" />
 			<p:inputText autocomplete="off" id="tPeliculaArgumento"
-				styleClass="form-control" value="#{peliculaController.pelicula.tPeliculaArgumento}" maxlength="45"
-				required="true" />
-		<br />
-		<br />
-			<h:outputLabel for="tPeliculaPortada" value="Portada (URL): " styleClass="control-label" />							
+				styleClass="form-control"
+				value="#{peliculaController.pelicula.tPeliculaArgumento}"
+				maxlength="45" required="true" />
+			<br />
+			<br />
+			<h:outputLabel for="tPeliculaPortada" value="Portada (URL): "
+				styleClass="control-label" />
 			<p:inputText autocomplete="off" id="tPeliculaPortada"
-				styleClass="form-control" value="#{peliculaController.pelicula.tPeliculaPortada}" maxlength="45"
-				required="true" />
-		<br />
-		<br />
-			<h:outputLabel for="tPeliculaImagen" value="Imagen (URL): " styleClass="control-label" />							
+				styleClass="form-control"
+				value="#{peliculaController.pelicula.tPeliculaPortada}"
+				maxlength="45" required="true" />
+			<br />
+			<br />
+			<h:outputLabel for="tPeliculaImagen" value="Imagen (URL): "
+				styleClass="control-label" />
 			<p:inputText autocomplete="off" id="tPeliculaImagen"
-				styleClass="form-control" value="#{peliculaController.pelicula.tPeliculaImagen}" maxlength="45"
-				required="true" />
-		<br />
-		<br />
-			<p:outputLabel for="cboDirector" value="Director: " styleClass="control-label"/>
-			<p:selectOneMenu id="cboDirector" value="#{peliculaController.pelicula.director}"
+				styleClass="form-control"
+				value="#{peliculaController.pelicula.tPeliculaImagen}"
+				maxlength="45" required="true" />
+			<br />
+			<br />
+			<p:outputLabel for="cboDirector" value="Director: "
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboDirector"
+				value="#{peliculaController.pelicula.director}"
 				converter="omnifaces.SelectItemsConverter">
-				<f:selectItems value="#{peliculaController.listaDirectores}" var = "d" 
-					itemLabel="#{d.nDirector}" itemValue="#{d}"/>
-		
+				<f:selectItems value="#{peliculaController.listaDirectores}" var="d"
+					itemLabel="#{d.nDirector}" itemValue="#{d}" />
 			</p:selectOneMenu>
 			<br />
-		<br />
-		<br />
+			<br />
+			<br />
 			<p:commandButton value="Registrar"
 				actionListener="#{peliculaController.insertar()}"
 				styleClass="btn btn-primary " update="@form"
-				action="listPelicula?faces-redirect=true" /> <!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
-			<p:commandButton value="Volver"
-				action="panel?faces-redirect=true" immediate="true"
-				styleClass="btn btn-default" ajax="false" />
-				
-			<p:growl id="growl" sticky="true" showDetail="true" life="3000" /> <!-- Botón "Volver" redirecciona a la pantalla de inicio -->
-		<br />
-		<br />
+				action="pelicula?faces-redirect=true" />
+			<!-- Dar al botón "Registrar" redirecciona a la lista que indica -->
+			<p:commandButton value="Volver" action="panel?faces-redirect=true"
+				immediate="true" styleClass="btn btn-default" ajax="false" />
+
+			<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+			<!-- Botón "Volver" redirecciona a la pantalla de inicio -->
+			<br />
+			<br />
+		</h:form>
+
+		<h:form name="frmpeliculas">
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="form-group table-responsive box-table-class">
@@ -81,51 +97,65 @@
 							value="#{peliculaController.listaPeliculas}" paginator="true"
 							paginatorPosition="top" rowsPerPageTemplate="10,20,30,40,50"
 							rows="10" styleClass="table table-bordered"
-							emptyMessage="No existen películas registradas actualmente." rowIndexVar="item"
-							style="margin-bottom:0">
+							emptyMessage="No existen películas registradas actualmente."
+							rowIndexVar="item" style="margin-bottom:0">
 
 							<p:column headerText="ID" sortBy="#{pel.cPelicula}">
 								<h:outputText value="#{pel.cPelicula}" />
 							</p:column>
-							
+
 							<p:column headerText="Nombre" sortBy="#{pel.nPelicula}">
 								<h:outputText value="#{pel.nPelicula}" />
 							</p:column>
-							
+
 							<p:column headerText="Sinopsis" sortBy="#{pel.tPeliculaSinopsis}">
 								<h:outputText value="#{pel.tPeliculaSinopsis}" />
 							</p:column>
-							
-							<p:column headerText="Argumento" sortBy="#{pel.tPeliculaArgumento}">
+
+							<p:column headerText="Argumento"
+								sortBy="#{pel.tPeliculaArgumento}">
 								<h:outputText value="#{pel.tPeliculaArgumento}" />
 							</p:column>
-							
+
 							<p:column headerText="Director">
 								<h:outputText value="#{pel.director.nDirector}" />
 							</p:column>
-							
+
 							<p:column headerText="Portada" sortBy="#{pel.tPeliculaPortada}">
-								<h:graphicImage value = "#{pel.tPeliculaPortada}" height="50px" width="50px"/>
+								<h:graphicImage value="#{pel.tPeliculaPortada}" height="50px"
+									width="50px" />
 							</p:column>
-							
+
 							<p:column headerText="Imagen" sortBy="#{pel.tPeliculaImagen}">
-								<h:graphicImage value = "#{pel.tPeliculaImagen}" height="50px" width="50px"/>
+								<h:graphicImage value="#{pel.tPeliculaImagen}" height="50px"
+									width="50px" />
 							</p:column>
-							
-							<p:column headerText="Operación" exportable="false">	<!-- TODA REQUEST LLEGA AL CONTROLADOR -->
+
+							<p:column headerText="Operación" exportable="false">
+								<!-- TODA REQUEST LLEGA AL CONTROLADOR -->
 								<h:commandLink action="listPelicula" value="Eliminar"
 									actionListener="#{peliculaController.eliminar(pel)}" />
 							</p:column>
-							
+
 						</p:dataTable>
 					</div>
-				</div>				
+				</div>
 			</div>
 		</h:form>
+		
+		<h:outputText style="color:white;" value="#{usuarioController.usuarioLogin.nombreEmail}" />
+		<br></br>
+		<h:outputText style="color:white;" value="#{usuarioController.usuarioLogin.nombrePassword}" />
+		<br></br>
+		<h:outputText style="color:white;" value="#{usuarioController.usuarioLogin.nombreUsuario}" />
+		<br></br>
+		<h:outputText style="color:white;" value="#{usuarioController.usuarioLogin.cUsuario}" />
+		<br></br>
+		
+		
 	</ui:define>
 
 	<ui:define name="footerCont">
-
 	</ui:define>
 </ui:composition>
 </html>

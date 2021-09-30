@@ -46,6 +46,11 @@ public class PeliculaController implements Serializable{
 		this.listarPelicula();
 	}
 	
+	public String verPelicula(Pelicula pelicula) {
+		this.setPelicula(pelicula);
+		return "peliculaUsuario.xhtml";
+	}
+	
 	public String nuevoPelicula() {
 		this.setPelicula(new Pelicula());
 		return "pelicula.xhtml";
@@ -57,7 +62,7 @@ public class PeliculaController implements Serializable{
 		this.listarPelicula();
 	}
 	
-	public void listarDirector() {
+	public void listarDirector() {               // Se repite listarMotor() o ListarParte()
 		listaDirectores = dService.listar();
 	}
 	public void listarPelicula() {            

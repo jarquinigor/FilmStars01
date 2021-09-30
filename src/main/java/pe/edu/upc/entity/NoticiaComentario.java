@@ -2,6 +2,7 @@ package pe.edu.upc.entity;
 
 import java.io.Serializable;
 
+//import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class NoticiaComentario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int cNoticiaComentario;
 
-	@ManyToOne
+	@ManyToOne 
 	@JoinColumn(name = "cNoticia", nullable = false)
 	private Noticia noticia;
 

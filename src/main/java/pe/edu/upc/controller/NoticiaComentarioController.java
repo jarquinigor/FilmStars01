@@ -14,6 +14,7 @@ import pe.edu.upc.entity.Noticia;
 import pe.edu.upc.entity.NoticiaComentario;
 
 import pe.edu.upc.service.IUsuarioService;
+import pe.edu.upc.serviceimpl.LoginService;
 import pe.edu.upc.service.INoticiaService;
 import pe.edu.upc.service.INoticiaComentarioService;
 
@@ -33,6 +34,10 @@ public class NoticiaComentarioController implements Serializable{
 	@Inject
 	private INoticiaComentarioService ncService;
 	
+	///
+	@Inject
+	private LoginService lService;
+	///
 	private Usuario usuario;
 	private Noticia noticia;
 	private NoticiaComentario noticiaComentario;
@@ -58,14 +63,34 @@ public class NoticiaComentarioController implements Serializable{
 	
 	public String nuevoNoticiaComentario() {
 		this.setNoticiaComentario(new NoticiaComentario());
-		return "noticiaComentario.xhtml";
+		return "noticiaComentario.xhtml";	
 	}
 	
-	public void insertar() {
+	public void insertar(Noticia noticia) {
+		
+		noticiaComentario.setUsuario(lService.getUsuario());
+		noticiaComentario.setNoticia(noticia);
+		
+		//probar setear sino
+		
+		
+		System.out.println(noticia.getcNoticia());
+		System.out.println(noticia.getnNoticiaTitulo());
+		System.out.println(noticia.getnNoticiaSubtitulo());
+		System.out.println(noticia.gettNoticia());
+		
 		ncService.insertar(noticiaComentario);
+		
 		limpiarNoticiaComentario();
 		this.listarNoticiaComentario();
 	}
+	
+	public List<NoticiaComentario> verNoticiaComentarios(Noticia noticia) { //NEW
+		listaNoticiaComentarios = ncService.filtroNoticiaComentario(noticia.getcNoticia());
+		
+		return listaNoticiaComentarios;
+	}
+	
 	
 	public void listarUsuario() {
 		listaUsuarios = uService.listar();
@@ -133,4 +158,5 @@ public class NoticiaComentarioController implements Serializable{
 	public void setListaNoticiaComentarios(List<NoticiaComentario> listaNoticiaComentarios) {
 		this.listaNoticiaComentarios = listaNoticiaComentarios;
 	}
+	
 }
