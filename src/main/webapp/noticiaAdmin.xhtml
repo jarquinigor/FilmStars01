@@ -106,6 +106,12 @@
 							emptyMessage="No existen noticias registradas actualmente." rowIndexVar="item"
 							style="margin-bottom:0">
 
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Editar" icon="ui-icon-disk"
+						  			action="#{noticiaController.editNoticia(noti)}"
+						  			ajax="false"/>
+							</p:column>
+							
 							<p:column headerText="ID" sortBy="#{noti.cNoticia}">
 								<h:outputText value="#{noti.cNoticia}" />
 							</p:column>

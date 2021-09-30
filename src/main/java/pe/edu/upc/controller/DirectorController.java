@@ -48,7 +48,32 @@ public class DirectorController implements Serializable {
 	public void limpiarDirector() {
 		this.init();
 	}
-
+	
+	public void update(Director director) {
+		dService.update(director);
+	}
+	
+	public String saveDirector() {
+		String view="";
+		try {
+			dService.update(this.director);
+			view = "/director";
+			limpiarDirector();
+		} catch (Exception e) {
+		}
+		return view;
+	}
+	
+	public String editDirector(Director dir) {
+		String view="";
+		try {
+			this.director = dir;
+			view = "/updateDirector";
+		} catch (Exception e) {
+		}
+		return view;
+	}
+	
 	public void eliminar(Director director) {
 		dService.eliminar(director.getcDirector());
 		this.listarDirector();

@@ -23,6 +23,12 @@ public class DirectorDaoImpl implements IDirectorDao, Serializable{
 	public void insertar(Director director) {
 		em.persist(director);
 	}
+	
+	@Transactional
+	@Override
+	public void update(Director director) {
+		em.merge(director);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

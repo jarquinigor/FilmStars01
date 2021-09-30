@@ -87,7 +87,13 @@
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No hay ningún director registrado actualmente." rowIndexVar="item"
 							style="margin-bottom:0">
-
+							
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Editar" icon="ui-icon-disk"
+						  			action="#{directorController.editDirector(dir)}"
+						  			ajax="false"/>
+							</p:column>
+							
 							<p:column headerText="ID" sortBy="#{dir.cDirector}">
 								<h:outputText value="#{dir.cDirector}" />
 							</p:column>

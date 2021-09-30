@@ -73,6 +73,34 @@ public class PeliculaController implements Serializable{
 		this.init();
 	}
 	
+	public String savePelicula() {
+		String view="";
+		try {
+			this.pelicula.setDirector(this.director);
+			
+			pService.update(this.pelicula);
+			view="/pelicula";
+			limpiarPelicula();
+		} catch (Exception e) {
+		}
+		return view;
+	}
+	
+	public String editPelicula(Pelicula pel) {
+		String view="";
+		try {
+			this.director=pel.getDirector();
+			this.pelicula=pel;
+			view="/updatePelicula";
+		} catch (Exception e) {
+		}
+		return view;
+	}
+	
+	public void update(Pelicula pelicula) {
+		pService.update(pelicula);
+	}
+	
 	public void eliminar(Pelicula pelicula) {
 		pService.eliminar(pelicula.getcPelicula());
 		this.listarPelicula();

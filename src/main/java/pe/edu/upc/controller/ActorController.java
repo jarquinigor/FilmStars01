@@ -9,8 +9,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.primefaces.event.SelectEvent;
-
 import Util.Message;
 import pe.edu.upc.entity.Actor;
 import pe.edu.upc.service.IActorService;
@@ -26,7 +24,6 @@ public class ActorController implements Serializable{
 	private IActorService aService;
 	private Actor actor;
 	List<Actor> listaActores;
-	private Actor actorSelect;
 	
 	@PostConstruct
 	public void init() {
@@ -54,18 +51,31 @@ public class ActorController implements Serializable{
 	}
 	
 	public void update(Actor actor) {
-		
+		aService.update(actor);
+	}
+	
+	public String saveActor() {
+		String view = "";
 		try {
-			if (this.actorSelect != null) {
-				this.actor = actorSelect;
-			}
-			else {
-				Message.messageError("Debe seleccionar un actor");
-			}
-		} catch (Exception e) {
-			Message.messageError("Error en actor: " + e.getMessage());
+			aService.update(this.actor);
+			view = "/actor";
+			limpiarActor();
+		} 
+		catch (Exception e) {
 		}
-		
+		return view;
+	}
+	
+	public String editActor(Actor act) {
+		String view = "";
+		try 
+		{
+			this.actor = act;
+			view = "/updateActor";
+		} 
+		catch (Exception e) {
+		}
+		return view;
 	}
 	
 	public void eliminar(Actor actor) {
@@ -81,11 +91,7 @@ public class ActorController implements Serializable{
 			listaActores = this.aService.findByNameActor(this.getActor());
 		}
 	}
-	
-	public void actorSelect(SelectEvent e) {
-		this.actorSelect = (Actor)e.getObject();
-	}
-	
+
 	public Actor getActor() {
 		return actor;
 	}
@@ -100,14 +106,6 @@ public class ActorController implements Serializable{
 
 	public void setListaActores(List<Actor> listaActores) {
 		this.listaActores = listaActores;
-	}
-
-	public Actor getActorSelect() {
-		return actorSelect;
-	}
-
-	public void setActorSelect(Actor actorSelect) {
-		this.actorSelect = actorSelect;
 	}
 	
 }

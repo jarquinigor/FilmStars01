@@ -23,6 +23,12 @@ public class NoticiaDaoImpl implements INoticiaDao, Serializable{
 	public void insertar(Noticia noticia) {
 		em.persist(noticia);
 	}
+	
+	@Transactional
+	@Override
+	public void update(Noticia noticia) {
+		em.merge(noticia);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

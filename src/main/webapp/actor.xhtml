@@ -89,7 +89,15 @@
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No hay ningún actor registrado actualmente."
 							rowIndexVar="item" style="margin-bottom:0">
-
+							
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Editar" icon="ui-icon-disk"
+						  			action="#{actorController.editActor(act)}"
+						  			ajax="false"/>
+							</p:column>
+							
+							
+							
 							<p:column headerText="ID" sortBy="#{act.cActor}">
 								<h:outputText value="#{act.cActor}" />
 							</p:column>

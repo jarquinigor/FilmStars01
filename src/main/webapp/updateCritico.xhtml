@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="masterAdmin.xhtml">
+	
+	<ui:define name="title">
+		Update de Criticos
+	</ui:define>
+	
+	<ui:define name="titleCont">
+		<span>UPDATE CRITICO</span>
+	</ui:define>
+	
+	<ui:define name="content">
+		
+		<h:form id="frm">
+			
+			<p:growl id="men">
+				
+				<p:toolbar>
+					
+					<f:facet name="right">
+						<p:commandButton value="Guardar"
+							action="#{criticoController.saveCritico()}" ajax="false" />
+						
+						<p:commandButton value="Regresar"
+							action="/critico.xhtml" ajax="false" />
+						
+					</f:facet>
+					
+				</p:toolbar>
+				
+				<p:panelGrid id="panGridCritico" columns="2" style="width:100%">
+					
+					<p:outputLabel value="Nombre: " for="nombreCritico" />
+					<p:inputText id="nombreCritico" required="true"
+						value="#{criticoController.critico.nCritico}" />
+					<p:inputText id="cCritico" required="true" style="display:none"
+						value="#{criticoController.critico.cCritico}" />
+					
+				</p:panelGrid>
+				
+				<br />
+				
+				
+			</p:growl>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</html>

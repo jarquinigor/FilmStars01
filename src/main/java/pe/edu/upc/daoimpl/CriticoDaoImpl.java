@@ -23,6 +23,12 @@ public class CriticoDaoImpl implements ICriticoDao, Serializable{
 	public void insertar(Critico critico) {
 		em.persist(critico);
 	}
+	
+	@Transactional
+	@Override
+	public void update(Critico critico) {
+		em.merge(critico);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

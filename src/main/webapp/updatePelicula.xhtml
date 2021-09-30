@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="masterAdmin.xhtml">
+	
+	<ui:define name="title">
+		Update de Pelicula
+	</ui:define>
+	
+	<ui:define name="titleCont">
+		<span>UPDATE PELICULA</span>
+	</ui:define>
+	
+	<ui:define name="content">
+		
+		<h:form id="frm">
+			
+			<p:growl id="men">
+				
+				<p:toolbar>
+					
+					<f:facet name="right">
+						<p:commandButton value="Guardar"
+							action="#{peliculaController.savePelicula()}" ajax="false" />
+						
+						<p:commandButton value="Regresar"
+							action="/pelicula.xhtml" ajax="false" />
+						
+					</f:facet>
+					
+				</p:toolbar>
+				
+				<p:panelGrid id="panGridPelicula" columns="2" style="width:100%">
+					
+					<p:outputLabel value="Nombre: " for="nombrePelicula" />
+					<p:inputText id="nombrePelicula" required="true"
+						value="#{peliculaController.pelicula.nPelicula}" />
+					<p:outputLabel value="Sinopsis: " for="sinopsisPelicula" />
+					<p:inputText id="sinopsisPelicula" required="true"
+						value="#{peliculaController.pelicula.tPeliculaSinopsis}" />
+					<p:outputLabel value="Argumento: " for="argumentoPelicula" />
+					<p:inputText id="argumentoPelicula" required="true"
+						value="#{peliculaController.pelicula.tPeliculaArgumento}" />
+					<p:outputLabel value="Portada: " for="portadaPelicula" />
+					<p:inputText id="portadaPelicula" required="true"
+						value="#{peliculaController.pelicula.tPeliculaPortada}" />
+					<p:outputLabel value="Imagen: " for="imagenPelicula" />
+					<p:inputText id="imagenPelicula" required="true"
+						value="#{peliculaController.pelicula.tPeliculaImagen}" />
+					<p:outputLabel value="Director" for="cboDirector" />
+					<p:selectOneMenu id="cboDirector" required="true" effect="drop"
+						value="#{peliculaController.director}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItems value="#{peliculaController.listaDirectores}"
+							var="director" itemLabel="#{director.nDirector}"
+							itemValue="#{director}" />
+					</p:selectOneMenu>
+					<p:inputText id="cPelicula" required="true" style="display:none"
+						value="#{peliculaController.pelicula.cPelicula}" />
+					
+				</p:panelGrid>
+				
+				<br />
+				
+				
+			</p:growl>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</html>

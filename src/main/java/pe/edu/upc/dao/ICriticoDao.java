@@ -6,6 +6,7 @@ import pe.edu.upc.entity.Critico;
 
 public interface ICriticoDao {
 	public void insertar(Critico critico);
+	public void update(Critico critico);
 	public List<Critico> listar();
 	public void eliminar(int CCritico);
 	public List<Critico> findByNameCritico(Critico c);

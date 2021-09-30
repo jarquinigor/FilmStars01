@@ -24,6 +24,11 @@ public class PeliculaServiceImpl implements IPeliculaService, Serializable {
 	public void insertar(Pelicula pelicula) {
 		mD.insertar(pelicula);
 	}
+	
+	@Override
+	public void update(Pelicula pelicula) {
+		mD.update(pelicula);
+	}
 
 	@Override
 	public List<Pelicula> listar() {

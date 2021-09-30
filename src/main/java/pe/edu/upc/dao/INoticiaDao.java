@@ -5,6 +5,7 @@ import pe.edu.upc.entity.Noticia;
 
 public interface INoticiaDao {
 	public void insertar(Noticia noticia);
+	public void update(Noticia noticia);
 	public List<Noticia> listar();
 	public void eliminar(int CNoticia);
 	public List<Noticia> findByTituloNoticia(Noticia n);

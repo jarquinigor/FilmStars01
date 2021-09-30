@@ -48,7 +48,32 @@ public class CriticoController implements Serializable {
 	public void limpiarCritico() {
 		this.init();
 	}
-
+	
+	public void update(Critico critico) {
+		cService.update(critico);
+	}
+	
+	public String saveCritico() {
+		String view="";
+		try {
+			cService.update(this.critico);
+			view = "/critico";
+			limpiarCritico();
+		} catch (Exception e) {
+		}
+		return view;
+	}
+	
+	public String editCritico(Critico cri) {
+		String view="";
+		try {
+			this.critico = cri;
+			view = "/updateCritico";
+		} catch (Exception e) {
+		}
+		return view;
+	}
+	
 	public void eliminar(Critico critico) {
 		cService.eliminar(critico.getcCritico());
 		this.listarCritico();

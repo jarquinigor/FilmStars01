@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="masterAdmin.xhtml">
+	
+	<ui:define name="title">
+		Update de Texto Critica
+	</ui:define>
+	
+	<ui:define name="titleCont">
+		<span>UPDATE TEXTO CRITICA</span>
+	</ui:define>
+	
+	<ui:define name="content">
+		
+		<h:form id="frm">
+			
+			<p:growl id="men">
+				
+				<p:toolbar>
+					
+					<f:facet name="right">
+						<p:commandButton value="Guardar"
+							action="#{textoCriticaController.saveTextoCritica()}" ajax="false" />
+						
+						<p:commandButton value="Regresar"
+							action="/textoCritica.xhtml" ajax="false" />
+						
+					</f:facet>
+					
+				</p:toolbar>
+				
+				<p:panelGrid id="panGridTextoCritica" columns="2" style="width:100%">
+					
+					<p:outputLabel value="Texto: " for="textoCritica" />
+					<p:inputText id="textoCritica" required="true"
+						value="#{textoCriticaController.textoCritica.tCritica}" />
+					<p:outputLabel value="Pelicula" for="cboPelicula" />
+					<p:selectOneMenu id="cboPelicula" required="true" effect="drop"
+						value="#{textoCriticaController.pelicula}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItems value="#{textoCriticaController.listaPeliculas}"
+							var="pelicula" itemLabel="#{pelicula.nPelicula}"
+							itemValue="#{pelicula}" />
+					</p:selectOneMenu>
+					<p:outputLabel value="Critico" for="cboCritico" />
+					<p:selectOneMenu id="cboCritico" required="true" effect="drop"
+						value="#{textoCriticaController.critico}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItems value="#{textoCriticaController.listaCriticos}"
+							var="critico" itemLabel="#{critico.nCritico}"
+							itemValue="#{critico}" />
+					</p:selectOneMenu>
+					<p:inputText id="cTextoCritica" required="true" style="display:none"
+						value="#{textoCriticaController.textoCritica.cTextoCritica}" />
+					
+				</p:panelGrid>
+				
+				<br />
+				
+				
+			</p:growl>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</html>

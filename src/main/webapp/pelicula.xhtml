@@ -133,7 +133,13 @@
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen películas registradas actualmente."
 							rowIndexVar="item" style="margin-bottom:0">
-
+							
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Editar" icon="ui-icon-disk"
+						  			action="#{peliculaController.editPelicula(pel)}"
+						  			ajax="false"/>
+							</p:column>
+							
 							<p:column headerText="ID" sortBy="#{pel.cPelicula}">
 								<h:outputText value="#{pel.cPelicula}" />
 							</p:column>

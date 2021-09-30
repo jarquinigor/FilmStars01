@@ -23,6 +23,12 @@ public class PeliculaDaoImpl implements IPeliculaDao, Serializable{
 	public void insertar(Pelicula pelicula) {
 		em.persist(pelicula);
 	}
+	
+	@Transactional
+	@Override
+	public void update(Pelicula pelicula) {
+		em.merge(pelicula);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

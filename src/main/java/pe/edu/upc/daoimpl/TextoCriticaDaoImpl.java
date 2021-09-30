@@ -23,6 +23,12 @@ public class TextoCriticaDaoImpl implements ITextoCriticaDao, Serializable{
 	public void insertar(TextoCritica textoCritica) {
 		em.persist(textoCritica);
 	}
+	
+	@Transactional
+	@Override
+	public void update(TextoCritica textoCritica) {
+		em.merge(textoCritica);
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

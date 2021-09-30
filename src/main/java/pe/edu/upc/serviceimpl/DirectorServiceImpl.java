@@ -24,6 +24,11 @@ public class DirectorServiceImpl implements IDirectorService, Serializable{
 	public void insertar(Director director) {
 		mD.insertar(director);	
 	}
+	
+	@Override
+	public void update(Director director) {
+		mD.update(director);
+	}
 
 	@Override
 	public List<Director> listar() {

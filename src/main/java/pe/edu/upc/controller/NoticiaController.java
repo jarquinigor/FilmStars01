@@ -59,6 +59,31 @@ public class NoticiaController implements Serializable {
 	public void limpiarNoticia() {
 		this.init();
 	}
+	
+	public void update(Noticia noticia) {
+		nService.update(noticia);
+	}
+	
+	public String saveNoticia() {
+		String view="";
+		try {
+			nService.update(this.noticia);
+			view="/noticiaAdmin";
+			limpiarNoticia();
+		} catch (Exception e) {
+		}
+		return view;
+	}
+	
+	public String editNoticia(Noticia noti) {
+		String view="";
+		try {
+			this.noticia = noti;
+			view = "/updateNoticia";
+		} catch (Exception e) {
+		}
+		return view;
+	}
 
 	public void eliminar(Noticia noticia) {
 		nService.eliminar(noticia.getcNoticia());

@@ -24,6 +24,11 @@ public class CriticoServiceImpl implements ICriticoService, Serializable{
 	public void insertar(Critico critico) {
 		mD.insertar(critico);	
 	}
+	
+	@Override
+	public void update(Critico critico) {
+		mD.update(critico);	
+	}
 
 	@Override
 	public List<Critico> listar() {

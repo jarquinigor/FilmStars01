@@ -105,7 +105,13 @@
 							rows="10" styleClass="table table-bordered"
 							emptyMessage="No existen críticas por parte los críticos registradas." rowIndexVar="item"
 							style="margin-bottom:0">
-
+							
+							<p:column headerText="Operación" exportable="false">
+								<p:commandButton value="Editar" icon="ui-icon-disk"
+						  			action="#{textoCriticaController.editTextoCritica(tex)}"
+						  			ajax="false"/>
+							</p:column>
+							
 							<p:column headerText="ID" sortBy="#{tex.cTextoCritica}">
 								<h:outputText value="#{tex.cTextoCritica}" />
 							</p:column>

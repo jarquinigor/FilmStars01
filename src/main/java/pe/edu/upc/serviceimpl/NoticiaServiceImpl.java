@@ -24,6 +24,11 @@ public class NoticiaServiceImpl implements INoticiaService, Serializable{
 	public void insertar(Noticia noticia) {
 		mD.insertar(noticia);	
 	}
+	
+	@Override
+	public void update(Noticia noticia) {
+		mD.update(noticia);	
+	}
 
 	@Override
 	public List<Noticia> listar() {

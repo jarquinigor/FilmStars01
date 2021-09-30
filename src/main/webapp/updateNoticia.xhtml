@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<ui:composition template="masterAdmin.xhtml">
+	
+	<ui:define name="title">
+		Update de Noticias
+	</ui:define>
+	
+	<ui:define name="titleCont">
+		<span>UPDATE NOTICIA</span>
+	</ui:define>
+	
+	<ui:define name="content">
+		
+		<h:form id="frm">
+			
+			<p:growl id="men">
+				
+				<p:toolbar>
+					
+					<f:facet name="right">
+						<p:commandButton value="Guardar"
+							action="#{noticiaController.saveNoticia()}" ajax="false" />
+						
+						<p:commandButton value="Regresar"
+							action="/noticiaAdmin.xhtml" ajax="false" />
+						
+					</f:facet>
+					
+				</p:toolbar>
+				
+				<p:panelGrid id="panGridNoticia" columns="2" style="width:100%">
+					
+					<p:outputLabel value="Titulo: " for="tituloNoticia" />
+					<p:inputText id="tituloNoticia" required="true"
+						value="#{noticiaController.noticia.nNoticiaTitulo}" />
+					<p:outputLabel value="Subtitulo: " for="subtituloNoticia" />
+					<p:inputText id="subtituloNoticia" required="true"
+						value="#{noticiaController.noticia.nNoticiaSubtitulo}" />
+					<p:outputLabel value="Texto: " for="textoNoticia" />
+					<p:inputText id="textoNoticia" required="true"
+						value="#{noticiaController.noticia.tNoticia}" />
+					<p:outputLabel value="Imagen: " for="imagenNoticia" />
+					<p:inputText id="imagenNoticia" required="true"
+						value="#{noticiaController.noticia.tNoticiaImagen}" />
+					<p:inputText id="cCritico" required="true" style="display:none"
+						value="#{noticiaController.noticia.cNoticia}" />
+					
+				</p:panelGrid>
+				
+				<br />
+				
+				
+			</p:growl>
+			
+		</h:form>
+		
+	</ui:define>
+	
+</ui:composition>
+
+</html>

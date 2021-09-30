@@ -81,6 +81,36 @@ public class TextoCriticaController implements Serializable{
 		this.init();
 	}
 	
+	public void update(TextoCritica textoCritica) {
+		tcService.update(textoCritica);
+	}
+	
+	public String saveTextoCritica() {
+		String view="";
+		try {			
+			this.textoCritica.setPelicula(this.pelicula);
+			this.textoCritica.setCritico(this.critico);
+			
+			tcService.update(this.textoCritica);
+			view="/textoCritica";
+			limpiarTextoCritica();
+		} catch (Exception e) {
+		}
+		return view;
+	}
+	
+	public String editTextoCritica(TextoCritica tex) {
+		String view="";
+		try {
+			this.pelicula=tex.getPelicula();
+			this.critico=tex.getCritico();
+			this.textoCritica=tex;
+			view="/updateTextoCritica";
+		} catch (Exception e) {
+		}
+		return view;
+	}
+	
 	public void eliminar(TextoCritica textoCritica) {
 		tcService.eliminar(textoCritica.getcTextoCritica());
 		this.listarTextoCritica();

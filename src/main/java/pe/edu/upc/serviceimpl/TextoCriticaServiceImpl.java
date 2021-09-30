@@ -24,6 +24,11 @@ public class TextoCriticaServiceImpl implements ITextoCriticaService, Serializab
 	public void insertar(TextoCritica textoCritica) {
 		mD.insertar(textoCritica);	
 	}
+	
+	@Override
+	public void update(TextoCritica textoCritica) {
+		mD.update(textoCritica);	
+	}
 
 	@Override
 	public List<TextoCritica> listar() {
